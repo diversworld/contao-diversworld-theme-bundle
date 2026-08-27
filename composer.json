@@ -1,0 +1,17 @@
+{
+    "name": "diversworld/contao-diversworld-theme-bundle",
+    "description": "Diversworld theme for Contao CMS",
+    "type": "contao-bundle",
+    "license": "LGPL-3.0-or-later",
+    "require": {
+        "contao/core-bundle": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Diversworld\\ContaoDiversworldThemeBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Diversworld\\ContaoDiversworldThemeBundle\\ContaoManager\\Plugin"
+    }
+}
