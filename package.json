@@ -1,0 +1,21 @@
+{
+  "name": "contao-diversworld-theme-bundle",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass assets/scss/diversworld.scss public/css/diversworld.css --style=compressed --source-map",
+    "dev": "sass assets/scss/diversworld.scss public/css/diversworld.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https.//github.com/diversworld/contao-diversworld-theme-bundle"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.103.1"
+  }
+}

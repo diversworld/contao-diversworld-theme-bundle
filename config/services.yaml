@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Diversworld\ContaoDiversworldThemeBundle\:
+        resource: ../src/
+        exclude:
+            - '../src/ContaoManager'
+            - '../src/DependencyInjection'

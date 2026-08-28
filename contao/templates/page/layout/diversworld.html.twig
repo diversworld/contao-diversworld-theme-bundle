@@ -1,19 +1,51 @@
+<link rel="stylesheet" href="{{ asset('bundles/contaodiversworldtheme/css/diversworld.css') }}"/>
+
 {% slot header %}
-    <header class="dw-header">
-        <div>HEADER TEST</div>
-        {{ slot() }}
+    <header class="header">
+        <div class="container">
+            {{ slot() }}
+        </div>
     </header>
 {% endslot %}
 
+{% slot navigation %}
+    <nav class="navigation">
+        <div class="container">
+            {{ slot() }}
+        </div>
+    </nav>
+{% endslot %}
+
+{% slot hero %}
+    <section class="hero">
+        <div class="container">
+            {{ slot() }}
+        </div>
+    </section>
+{% endslot %}
+
+{% slot left %}
+    <aside class="left">
+        {{ slot() }}
+    </aside>
+{% endslot %}
+
 {% slot main %}
-    <main class="dw-main">
+    <main class="main">
         {{ slot() }}
     </main>
 {% endslot %}
 
-{% slot footer %}
-    <footer class="dw-footer">
-        <div>FOOTER TEST</div>
+{% slot right %}
+    <aside class="right">
         {{ slot() }}
+    </aside>
+{% endslot %}
+
+{% slot footer %}
+    <footer class="footer">
+        <div class="container">
+            {{ slot() }}
+        </div>
     </footer>
 {% endslot %}
