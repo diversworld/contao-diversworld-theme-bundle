@@ -1,0 +1,19 @@
+{% slot header %}
+    <header class="dw-header">
+        <div>HEADER TEST</div>
+        {{ slot() }}
+    </header>
+{% endslot %}
+
+{% slot main %}
+    <main class="dw-main">
+        {{ slot() }}
+    </main>
+{% endslot %}
+
+{% slot footer %}
+    <footer class="dw-footer">
+        <div>FOOTER TEST</div>
+        {{ slot() }}
+    </footer>
+{% endslot %}

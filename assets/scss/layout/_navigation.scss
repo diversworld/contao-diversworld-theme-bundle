@@ -1,0 +1,35 @@
+.page__navigation {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: white;
+
+    border-bottom:
+        1px solid #e5e7eb;
+}
+
+.nav-items > ul {
+
+    display: flex;
+
+    gap: 2rem;
+
+    list-style: none;
+}
+
+.nav-items a {
+
+    color: #111827;
+
+    font-weight: 600;
+}
+
+.nav-items a:hover {
+
+    color: #2563eb;
+}
+

@@ -16,7 +16,10 @@ class Plugin implements BundlePluginInterface
     {
         return [
             BundleConfig::create(ContaoDiversworldThemeBundle::class)
-                ->setLoadAfter([ContaoCoreBundle::class]),
+                ->setLoadAfter([
+                    ContaoCoreBundle::class,
+                    ThemeComponentsBundle::class,
+                ]),
         ];
     }
 }

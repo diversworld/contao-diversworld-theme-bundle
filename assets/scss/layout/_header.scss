@@ -1,0 +1,21 @@
+.page__header {
+
+    background: white;
+
+    border-bottom:
+        1px solid #e5e7eb;
+}
+
+.dw-header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 9999;
+
+    background: white;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,.08);
+}
