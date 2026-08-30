@@ -1,0 +1,28 @@
+.teaser-box {
+    background: white;
+
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+
+    transition: .2s;
+}
+
+.teaser-box:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.15);
+}
+
+.teaser-box img {
+    aspect-ratio: 16 / 9;
+
+    object-fit: cover;
+}
+
+.teaser-box .inside {
+    padding: 1.5rem;
+}

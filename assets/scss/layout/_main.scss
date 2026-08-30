@@ -1,11 +1,10 @@
-.page__main {
-
-    min-width: 0;
-}
-
 .main {
-
+    min-width: 0;
     min-height: 60vh;
     padding: var(--space-md);
     background-color: var(--color-background);
+}
+
+.inside {
+    max-width: 700px;
 }

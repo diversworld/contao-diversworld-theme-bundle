@@ -1,35 +1,206 @@
-.page__navigation {
-
+.navigation {
     position: sticky;
-
     top: 0;
 
-    z-index: 1000;
+    z-index: 5000;
 
-    background: white;
+    width: 100%;
 
-    border-bottom:
-        1px solid #e5e7eb;
+    background: rgba(30, 60, 80, 0.96);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    .container {
+        display: flex;
+        align-items: center;
+
+        min-height: 60px;
+    }
+
+    /*
+     * Hauptnavigation
+     */
+
+    .nav-items {
+        width: 100%;
+    }
+
+    .level_1 {
+        display: flex;
+        align-items: center;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+
+        gap: 0;
+    }
+
+    .level_1 > li {
+        position: relative;
+    }
+
+    /*
+     * Hauptmenü-Punkte
+     */
+
+    .level_1 > li > a,
+    .level_1 > li > strong {
+        display: block;
+
+        padding: 1.25rem 1.5rem;
+
+        color: #ffffff;
+
+        font-size: 1rem;
+        font-weight: 600;
+
+        text-decoration: none;
+
+        white-space: nowrap;
+
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+    }
+
+    /*
+     * Hover
+     */
+
+    .level_1 > li:hover > a,
+    .level_1 > li:hover > strong {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    /*
+     * Aktiver Menüpunkt
+     */
+
+    .level_1 > .active > a,
+    .level_1 > .active > strong,
+    .level_1 > .trail > a,
+    .level_1 > .trail > strong {
+        background: rgba(255, 255, 255, 0.18);
+    }
+
+    /*
+     * Untermenüs
+     *
+     * Standardmäßig NICHT sichtbar.
+     */
+
+    .level_2,
+    .level_3 {
+        position: absolute;
+
+        z-index: 5100;
+
+        margin: 0;
+        padding: 0;
+
+        min-width: 240px;
+
+        list-style: none;
+
+        background: rgba(30, 60, 80, 0.98);
+
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.2);
+
+        opacity: 0;
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transform: translateY(8px);
+
+        transition:
+            opacity 0.2s ease,
+            visibility 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    /*
+     * 2. Ebene
+     */
+
+    .level_1 > .submenu > .level_2 {
+        top: 100%;
+        left: 0;
+    }
+
+    /*
+     * Untermenü beim Hover öffnen
+     */
+
+    .level_1 > .submenu:hover > .level_2 {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+        transform: translateY(0);
+    }
+
+    /*
+     * Einträge im Untermenü
+     */
+
+    .level_2 > li > a,
+    .level_2 > li > strong {
+        display: block;
+
+        padding: 0.9rem 1.25rem;
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        white-space: nowrap;
+
+        transition:
+            background-color 0.2s ease;
+    }
+
+    .level_2 > li:hover > a,
+    .level_2 > li:hover > strong {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    /*
+     * 3. Ebene
+     */
+
+    .level_2 > .submenu {
+        position: relative;
+    }
+
+    .level_2 > .submenu > .level_3 {
+        top: 0;
+        left: 100%;
+    }
+
+    .level_2 > .submenu:hover > .level_3 {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+        transform: translateY(0);
+    }
 }
 
-.nav-items > ul {
+.navigation--right {
 
-    display: flex;
-
-    gap: 2rem;
-
-    list-style: none;
+    .level_1 {
+        justify-content: flex-end;
+    }
 }
-
-.nav-items a {
-
-    color: #111827;
-
-    font-weight: 600;
-}
-
-.nav-items a:hover {
-
-    color: #2563eb;
-}
-

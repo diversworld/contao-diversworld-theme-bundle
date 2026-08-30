@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="{{ asset('bundles/contaodiversworldtheme/css/diversworld.css') }}"/>
+<link
+    rel="stylesheet"
+    href="{{ asset('bundles/contaodiversworldtheme/css/diversworld.css') }}"
+>
 
 {% slot header %}
     <header class="header">
@@ -9,11 +12,7 @@
 {% endslot %}
 
 {% slot navigation %}
-    <nav class="navigation">
-        <div class="container">
-            {{ slot() }}
-        </div>
-    </nav>
+    {{ slot() }}
 {% endslot %}
 
 {% slot hero %}
@@ -32,7 +31,9 @@
 
 {% slot main %}
     <main class="main">
-        {{ slot() }}
+        <div class="container">
+            {{ slot() }}
+        </div>
     </main>
 {% endslot %}
 

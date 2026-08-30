@@ -1,0 +1,101 @@
+{% extends "@Contao/frontend_module/_base.html.twig" %}
+
+{% block content %}
+    {% if items %}
+        <nav
+            class="navigation"
+            aria-label="{{ 'MSC.headerNavigation'|trans }}"
+            itemscope
+            itemtype="https://schema.org/SiteNavigationElement"
+        >
+
+            <div class="navigation__inner">
+
+                <a
+                    href="{{ request.requestUri }}#skipNavigation{{ id }}"
+                    class="invisible"
+                >
+                    {{ 'MSC.skipNavigation'|trans }}
+                </a>
+
+                <button
+                    class="navigation__toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="navigation-menu-{{ id }}"
+                >
+                    <span class="navigation__toggle-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span class="navigation__toggle-label">
+                        Navigation
+                    </span>
+                </button>
+
+                <div
+                    class="navigation__menu"
+                    id="navigation-menu-{{ id }}"
+                >
+
+                    <ul class="navigation__level navigation__level--1">
+                        {% for item in items %}
+                            {% if item.isActive %}
+                                <li
+                                    class="navigation__item navigation__item--active{% if item.subitems %} navigation__item--submenu{% endif %}"
+                                >
+                                    <strong
+                                        class="navigation__link navigation__link--active"
+                                        itemprop="name"
+                                    >
+                                        {{ item.link|raw }}
+                                    </strong>
+
+                                    {% if item.subitems %}
+                                        <ul class="navigation__level navigation__level--2">
+                                            {{ item.subitems|raw }}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% else %}
+                                <li
+                                    class="navigation__item{% if item.subitems %} navigation__item--submenu{% endif %}"
+                                >
+                                    <a
+                                        href="{{ item.href }}"
+                                        class="navigation__link{% if item.subitems %} navigation__link--has-submenu{% endif %}"
+                                        {% if item.title %}title="{{ item.title }}"{% endif %}
+                                        {% if item.target %}target="{{ item.target }}"{% endif %}
+                                        {% if item.rel %}rel="{{ item.rel }}"{% endif %}
+                                        itemprop="url"
+                                    >
+                                        <span itemprop="name">
+                                            {{ item.link|striptags }}
+                                        </span>
+                                    </a>
+
+                                    {% if item.subitems %}
+                                        <ul class="navigation__level navigation__level--2">
+                                            {{ item.subitems|raw }}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+                <a
+                    id="skipNavigation{{ id }}"
+                    class="invisible"
+                    aria-hidden="true"
+                ></a>
+
+            </div>
+
+        </nav>
+    {% endif %}
+{% endblock %}
