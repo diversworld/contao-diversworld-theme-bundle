@@ -1,7 +1,6 @@
-<link rel="stylesheet" href="/bundles/contaodiversworldtheme/css/diversworld.css">
-{% add 'bundles/contaodiversworldtheme/css/diversworld.css' to stylesheets %}
-{% endadd %}
+{% extends "@Contao/page/layout.html.twig" %}
 
+{% block body_content %}
 {% slot header %}
     <header class="header">
         <div class="container">
@@ -49,3 +48,4 @@
         </div>
     </footer>
 {% endslot %}
+{% endblock %}

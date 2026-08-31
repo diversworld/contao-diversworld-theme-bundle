@@ -9,8 +9,8 @@
     "dev": "sass assets/scss/diversworld.scss public/css/diversworld.css --watch"
   },
   "repository": {
-    "type": "git",
-    "url": "https.//github.com/diversworld/contao-diversworld-theme-bundle"
+     "type": "git",
+     "url": "https://github.com/diversworld/contao-diversworld-theme-bundle"
   },
   "keywords": [],
   "author": "",
