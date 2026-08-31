@@ -1,0 +1,26 @@
+.invisible {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.invisible:focus {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	z-index: 100;
+	width: auto;
+	height: auto;
+	padding: 0.5rem 0.75rem;
+	margin: 0;
+	overflow: visible;
+	clip: auto;
+	color: #ffffff;
+	background: var(--color-primary);
+}

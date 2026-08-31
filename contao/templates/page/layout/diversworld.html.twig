@@ -1,15 +1,17 @@
+<link rel="stylesheet" href="/bundles/contaodiversworldtheme/css/diversworld.css">
 {% add 'bundles/contaodiversworldtheme/css/diversworld.css' to stylesheets %}
+{% endadd %}
 
 {% slot header %}
     <header class="header">
         <div class="container">
+            <a class="logo" href="/">
+                <img src="/files/odd/img/ODD_Logo.png" alt="ODD Exploring Contao Theme">
+            </a>
+
             {{ slot() }}
         </div>
     </header>
-{% endslot %}
-
-{% slot navigation %}
-    {{ slot() }}
 {% endslot %}
 
 {% slot hero %}

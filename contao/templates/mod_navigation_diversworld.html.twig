@@ -1,23 +1,20 @@
-{% set wrapper_attributes = attrs(cssID)
-    .addClass([class, 'navigation', 'block'])
-    .setIfExists('aria-label', ariaLabel|default|insert_tag)
-    .setIfExists('style', style)
-    .mergeWith(wrapper_attributes|default) %}
+{% extends "@Contao/frontend_module/_base.html.twig" %}
 
-<!-- indexer::stop -->
-<nav{{ wrapper_attributes }}>
-    <div class="container">
-        {% if headline|default %}
-        <{{ hl }}>{{ headline|insert_tag_html }}</{{ hl }}>
+{% block content %}
+    {% if items %}
+        <nav
+            class="navigation"
+            aria-label="{{ ariaLabel ?: 'MSC.headerNavigation'|trans }}"
+            itemscope
+            itemtype="https://schema.org/SiteNavigationElement"
+        >
+            <a href="{{ request }}#{{ skipId }}" class="invisible">
+                {{ skipNavigation }}
+            </a>
+
+            {{ items|raw }}
+
+            <span id="{{ skipId }}" class="invisible"></span>
+        </nav>
     {% endif %}
-
-    <a href="{{ request }}#{{ skipId }}" class="invisible">{{ skipNavigation }}</a>
-
-    <div class="nav-items">
-        {{ items|raw }}
-    </div>
-
-    <span id="{{ skipId }}" class="invisible"></span>
-    </div>
-</nav>
-<!-- indexer::continue -->
+{% endblock %}
