@@ -1,9 +1,5 @@
 .container {
-
-    width: min(
-        var(--container-width),
-        calc(100% - 2rem)
-    );
-
-    margin-inline: auto;
+    width: min(100% - 2rem, 1200px);
+    margin: 0 auto;
+    padding: 1.25rem 0;
 }

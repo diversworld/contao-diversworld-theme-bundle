@@ -1,51 +1,53 @@
 {% extends "@Contao/page/layout.html.twig" %}
 
 {% block body_content %}
-{% slot header %}
-    <header class="header">
-        <div class="container">
-            <a class="logo" href="/">
-                <img src="/files/odd/img/ODD_Logo.png" alt="ODD Exploring Contao Theme">
-            </a>
+    {% slot header %}
+        <header class="header">
+            <div class="container">
+                {{ slot() }}
+            </div>
+        </header>
+    {% endslot %}
 
-            {{ slot() }}
-        </div>
-    </header>
-{% endslot %}
+    {% slot hero %}
+        <section class="hero">
+            <div class="container">
+                {{ slot() }}
+            </div>
+        </section>
+    {% endslot %}
 
-{% slot hero %}
-    <section class="hero">
-        <div class="container">
-            {{ slot() }}
-        </div>
-    </section>
-{% endslot %}
+    {% slot main %}
+        <main class="main">
+            <div class="container">
+                <div class="content-grid">
 
-{% slot left %}
-    <aside class="left">
-        {{ slot() }}
-    </aside>
-{% endslot %}
+                    {% if slots.left is defined %}
+                        <aside class="left">
+                            {{ slots.left }}
+                        </aside>
+                    {% endif %}
 
-{% slot main %}
-    <main class="main">
-        <div class="container">
-            {{ slot() }}
-        </div>
-    </main>
-{% endslot %}
+                    <div class="main-content">
+                        {{ slot() }}
+                    </div>
 
-{% slot right %}
-    <aside class="right">
-        {{ slot() }}
-    </aside>
-{% endslot %}
+                    {% if slots.right is defined %}
+                        <aside class="right">
+                            {{ slots.right }}
+                        </aside>
+                    {% endif %}
 
-{% slot footer %}
-    <footer class="footer">
-        <div class="container">
-            {{ slot() }}
-        </div>
-    </footer>
-{% endslot %}
+                </div>
+            </div>
+        </main>
+    {% endslot %}
+
+    {% slot footer %}
+        <footer class="footer">
+            <div class="container">
+                {{ slot() }}
+            </div>
+        </footer>
+    {% endslot %}
 {% endblock %}

@@ -1,6 +1,14 @@
 {% extends "@Contao/frontend_module/_base.html.twig" %}
 
 {% block content %}
+    <div class="navbar-top">
+        <div class="container">
+            {{ insert_tag('theme::content::DW01/02')|raw }}
+        </div>
+    </div>
+    <div class="navbar-brand">
+        {{ insert_tag('theme::content::DW01/01')|raw }}
+    </div>
     {% if items %}
         <nav
             class="navigation"
