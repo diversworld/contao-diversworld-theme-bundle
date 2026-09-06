@@ -12,6 +12,10 @@ class LayoutEventListener
 {
     public function __invoke(LayoutEvent $event): void
     {
+        $GLOBALS['TL_CSS'][] = 'bundles/contaodiversworldtheme/css/bootstrap.css|static';
         $GLOBALS['TL_CSS'][] = 'bundles/contaodiversworldtheme/css/diversworld.css|static';
+        $GLOBALS['TL_CSS'][] = 'bundles/contaodiversworldtheme/css/fontawesome.css|static';
+        $GLOBALS['TL_CSS'][] = 'files/diversworld/css/custom.css|static';
+        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaodiversworldtheme/js/mobile-menu.js|static';
     }
 }

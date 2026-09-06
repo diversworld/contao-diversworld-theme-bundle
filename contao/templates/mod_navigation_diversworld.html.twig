@@ -1,28 +1,64 @@
 {% extends "@Contao/frontend_module/_base.html.twig" %}
 
 {% block content %}
+
+<header class="header">
+
     <div class="navbar-top">
         <div class="container">
             {{ insert_tag('theme::content::DW01/02')|raw }}
         </div>
     </div>
-    <div class="navbar-brand">
-        {{ insert_tag('theme::content::DW01/01')|raw }}
+
+    <div class="navbar-main">
+
+        <div class="container">
+
+            <div class="navbar-logo">
+                {{ insert_tag('theme::content::DW01/01')|raw }}
+            </div>
+
+            {% if items %}
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    aria-controls="navigation-{{ id }}"
+                    aria-expanded="false"
+                    aria-label="{{ 'MSC.toggleNavigation'|trans }}"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav
+                    id="navigation-{{ id }}"
+                    class="navigation"
+                    aria-label="{{ ariaLabel ?: 'MSC.headerNavigation'|trans }}"
+                    itemscope
+                    itemtype="https://schema.org/SiteNavigationElement"
+                >
+
+                    {{ request }}#{{ skipId }}
+                        {{ skipNavigation }}
+                    </a>
+
+                    {{ items|raw }}
+
+                    <span
+                        id="{{ skipId }}"
+                        class="invisible"
+                    ></span>
+
+                </nav>
+
+            {% endif %}
+
+        </div>
+
     </div>
-    {% if items %}
-        <nav
-            class="navigation"
-            aria-label="{{ ariaLabel ?: 'MSC.headerNavigation'|trans }}"
-            itemscope
-            itemtype="https://schema.org/SiteNavigationElement"
-        >
-            <a href="{{ request }}#{{ skipId }}" class="invisible">
-                {{ skipNavigation }}
-            </a>
 
-            {{ items|raw }}
+</header>
 
-            <span id="{{ skipId }}" class="invisible"></span>
-        </nav>
-    {% endif %}
 {% endblock %}

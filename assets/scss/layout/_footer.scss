@@ -3,21 +3,19 @@
     color: var(--main-footer-color);
     padding: 3rem 0;
     margin-top: 4rem;
+    font-size: 0.9rem;
 }
 
-.main-footer .row {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
+.footer h1,h2,h3,h4,h5,h6 {
+    color: var(--main-footer-color);
 }
-
-.main-footer .row > [class*='col-'] {
-    flex: 1 1 0;
-    min-width: 0;
-}
-
 .footer a {
     color: inherit;
+}
+
+.footer .icon {
+    float: left;
+    padding-right: 0.2rem;
 }
 
 .footer a:hover {
@@ -26,15 +24,5 @@
 
 .copyright-footer {
     padding-block: 2rem;
-}
-
-@media (max-width: 768px) {
-    .main-footer .row {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .main-footer .row > [class*='col-'] {
-        width: 100%;
-    }
+    text-align: center;
 }

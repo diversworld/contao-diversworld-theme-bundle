@@ -20,20 +20,22 @@
     {% slot main %}
         <main class="main">
             <div class="container">
-                <div class="content-grid">
+                {% set has_left_sidebar = slots.left is defined %}
+                {% set has_right_sidebar = slots.right is defined %}
+                <div class="row g-4">
 
-                    {% if slots.left is defined %}
-                        <aside class="left">
+                    {% if has_left_sidebar %}
+                        <aside class="left col-12 col-lg-3">
                             {{ slots.left }}
                         </aside>
                     {% endif %}
 
-                    <div class="main-content">
+                    <div class="main-content col-12{% if has_left_sidebar and has_right_sidebar %} col-lg-6{% elseif has_left_sidebar or has_right_sidebar %} col-lg-9{% endif %}">
                         {{ slot() }}
                     </div>
 
-                    {% if slots.right is defined %}
-                        <aside class="right">
+                    {% if has_right_sidebar %}
+                        <aside class="right col-12 col-lg-3">
                             {{ slots.right }}
                         </aside>
                     {% endif %}

@@ -1,10 +1,14 @@
 .main {
-    flex: 1;
-    padding: 4rem 0;
+    background: var(--page_background);
+
+    padding-top: 4rem;
+    padding-bottom: 5rem;
 }
 
-.main .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+.mod_article {
+    margin-bottom: 5rem;
+}
+
+.content-headline {
+    margin-bottom: 3rem;
 }

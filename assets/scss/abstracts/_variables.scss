@@ -16,13 +16,14 @@
 
 :root {
   /* Diversworld Colors */
-  --DwColor1: #0057b8;
-  --DwColor2: #69BF44;
-  --DwColor3: #36B3A5;
-  --DwColor4: #1F1F1F;
-  --DwColor5: #333333;
-  --DwColor6: #FFFFFF;
+  --DwColor1: #4a6073;
+  --DwColor2: #e21c2a;
+  --DwColor3: #7894ad;
+  --DwColor4: #454545;
+  --DwColor5: #262626;
+  --DwColor6: #ffffff;
   --DwColor7: #F8F8F8;
+  --DwColor8: #748be0;
   --DwGrey: #808080;
 
   --DwTextColor1: var(--DwColor1);
@@ -31,23 +32,23 @@
 
   /* Primary + Page */
   --primaryColor: var(--DwColor2);
-  --page_background: var(--DwColor7);
+  --page_background: #f4f5f6;
   --primary-background-text-color: var(--DwColor6);
   --secondary-background-text-color: var(--DwColor5);
 
   /* Gradient */
-  --gradientPrimaryColor1: var(--DwColor3);
-  --gradientPrimaryColor2: var(--DwColor1);
-  --gradientSecondaryColor1: #e1e1e1;
-  --gradientSecondaryColor2: #f2f2f2;
+  --gradientPrimaryColor1: var(--DwColor1);
+  --gradientPrimaryColor2: var(--DwColor3);
+  --gradientSecondaryColor1: #e6eaed;
+  --gradientSecondaryColor2: #f7f8f9;
 
   /* Buttons + Links */
-  --button-background: var(--DwColor4);
+  --button-background: var(--DwColor2);
   --button-color: var(--DwColor6);
-  --button-background-hover: var(--DwColor3);
+  --button-background-hover: var(--DwColor1);
   --button-color-hover: var(--DwColor6);
-  --link-color: var(--DwTextColor2);
-  --link-color-hover: var(--DwTextColor3);
+  --link-color: var(--DwColor1);
+  --link-color-hover: var(--DwColor2);
 
   /* Fonts */
   --mainFont: 'Muli', sans-serif;
@@ -62,12 +63,13 @@
   --h6-font-size: 0.9rem;
 
   --h1-color: var(--DwColor4);
-  --h2-color: var(--DwTextColor2);
-  --h3-color: var(--DwTextColor2);
-  --h4-color: var(--DwTextColor2);
-  --h5-color: var(--DwTextColor2);
-  --h6-color: var(--DwTextColor2);
+  --h2-color: var(--DwColor1);
+  --h3-color: var(--DwColor1);
+  --h4-color: var(--DwColor1);
+  --h5-color: var(--DwColor1);
+  --h6-color: var(--DwColor1);
 
+  --header-background: var(--DwColor8);
   --header-image-background: rgba(25, 25, 25, 0.8);
   --header-image-color: rgba(255, 255, 255, 0.9);
 
@@ -87,32 +89,33 @@
   --slider-control-color-active: var(--DwTextColor2);
 
   /* Header and Navigation */
-  --navbar-top-background1: var(--gradientPrimaryColor1);
-  --navbar-top-background2: var(--gradientPrimaryColor2);
+
+  --navbar-top-background1: var(--DwColor5);
+  --navbar-top-background2: var(--DwColor4);
   --navbar-top-color: var(--DwColor6);
 
   --navbar-background: var(--DwColor6);
   --nav-color: var(--DwColor5);
-  --nav-active-color: var(--DwTextColor2);
-  --nav-hover-color: var(--DwTextColor2);
+  --nav-active-color: var(--DwColor2);
+  --nav-hover-color: var(--DwColor2);
 
-  --nav-dropdown-background: var(--DwColor2);
+  --nav-dropdown-background: var(--DwColor5);
   --nav-dropdown-color: var(--DwColor6);
-  --nav-dropdown-hover-background: var(--DwColor5);
+  --nav-dropdown-hover-background: var(--DwColor2);
   --nav-dropdown-hover-color: var(--DwColor6);
 
   --navbar-toggler-background: var(--DwColor2);
   --navbar-toggler-color: var(--DwColor6);
   --navbar-mobile-background: var(--DwColor6);
-  --navbar-mobile-border-color: var(--DwColor2);
+  --navbar-mobile-border-color: var(--DwColor1);
   --navbar-mobile-dropdown-toggle-color: var(--DwColor5);
   --navbar-mobile-dropdown-background: var(--DwColor7);
 
   --subnav-background: var(--DwColor6);
-  --subnav-color: var(--DwTextColor2);
+  --subnav-color: var(--DwColor5);
   --subnav-hover-active-color: var(--primary-background-text-color);
   --subnav-hover-active-background: var(--DwColor2);
-  --subnav-border-color: var(--DwColor2);
+  --subnav-border-color: #d8dde1;
   --subnav-lvl2-color: var(--DwColor5);
 
   /* Newsletter */

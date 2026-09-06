@@ -1,17 +1,104 @@
+/*
+ * header.scss
+ */
+
 .header {
-    background: #fff;
-    box-shadow: 0 2px 15px rgba(0,0,0,.08);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 9999;
+
+    background: var(--header-background);
+
+    box-shadow: 0 2px 20px rgba(0, 0, 0, .08);
 }
 
-.navbar-brand {
-    padding: 1em 0;
-    text-align: center;
+/* ==================================================
+   Main Header
+================================================== */
+
+.navbar-main {
+    background: var(--navbar-background);
+    border-radius: 3rem;
 }
 
-.navbar-brand img {
-    max-height: 90px;
+.navbar-main .container {
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+
+    align-items: center;
+
+    gap: 2rem;
+
+    min-height: 100px;
+}
+
+/* ==================================================
+   Logo
+================================================== */
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    padding-top: 0.7rem;
+}
+
+.navbar-logo .mod_article {
+    margin: 0;
+}
+
+.navbar-logo img {
+    display: block;
+
+    max-height: 80px;
     width: auto;
+}
+
+/* ==================================================
+   Mobile Toggler
+================================================== */
+
+.navbar-toggler {
+    display: none;
+
+    width: 48px;
+    height: 48px;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.navbar-toggler span {
+    display: block;
+
+    width: 28px;
+    height: 3px;
+
+    margin: 5px auto;
+
+    background: var(--navbar-toggler-background);
+
+    transition: .3s;
+}
+
+/* ==================================================
+   Mobile
+================================================== */
+
+@media (max-width: 1024px) {
+
+    .navbar-main .container {
+
+        grid-template-columns:
+            1fr
+            auto;
+
+        gap: 1rem;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
 }
