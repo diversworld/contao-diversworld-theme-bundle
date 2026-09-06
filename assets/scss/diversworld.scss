@@ -30,5 +30,10 @@
 /* Components */
 
 @use "components/topbar";
+@use "components/calendar";
+@use "components/events";
+@use "components/news";
+@use "components/pagination";
+@use "components/forms";
 @use "components/slider";
 @use "components/teaserbox";

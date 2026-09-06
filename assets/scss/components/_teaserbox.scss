@@ -1,16 +1,8 @@
 .ce_ct_teaserBox .inside {
     height: 100%;
     background: var(--teaserbox-background);
-    box-shadow: 0 8px 25px rgba(0,0,0,.08);
-    transition: .3s;
-    border-radius: 3rem;
+    border-radius: var(--borderRadius);
     overflow: hidden;
-}
-
-.ce_ct_teaserBox .inside:hover {
-    transform: translateY(-5px);
-
-    box-shadow: 0 15px 35px rgba(0,0,0,.12);
 }
 
 .ce_ct_teaserBox figure {

@@ -83,8 +83,6 @@
     background: var(--nav-dropdown-background);
     border-top: 3px solid var(--DwColor2);
 
-    box-shadow: 0 12px 30px rgba(0,0,0,.15);
-
     opacity: 0;
     visibility: hidden;
 
@@ -118,6 +116,17 @@
     transition: .25s ease;
 }
 
+.navigation ul ul strong {
+    display: block;
+    padding: .85rem 1.25rem;
+    color: var(--nav-dropdown-hover-color);
+    font-weight: 700;
+}
+
+.navigation ul ul li.active > strong {
+    background: var(--nav-dropdown-hover-background);
+}
+
 .navigation ul ul a:hover {
     background: var(--nav-dropdown-hover-background);
     color: var(--nav-dropdown-hover-color);
@@ -136,11 +145,11 @@
    Current Navigation Item
 ================================================== */
 
-.navigation .active > strong {
+.navigation > ul > li.active > strong {
     position: relative;
 }
 
-.navigation .active > strong::after {
+.navigation > ul > li.active > strong::after {
     content: "";
 
     position: absolute;
@@ -174,8 +183,6 @@
         overflow-y: auto;
 
         background: var(--navbar-mobile-background);
-
-        box-shadow: -5px 0 20px rgba(0,0,0,.15);
 
         z-index: 9999;
     }
@@ -219,8 +226,6 @@
         min-width: 100%;
 
         border: 0;
-        box-shadow: none;
-
         background:
             var(--navbar-mobile-dropdown-background);
     }

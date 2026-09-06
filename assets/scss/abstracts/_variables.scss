@@ -16,9 +16,9 @@
 
 :root {
   /* Diversworld Colors */
-  --DwColor1: #292929;
-  --DwColor2: #e20074;
-  --DwColor3: #7a7a7a;
+  --DwColor1: #003366;
+  --DwColor2: #CE0006;
+  --DwColor3: #996600;
   --DwColor4: #1f1f1f;
   --DwColor5: #2b2b2b;
   --DwColor6: #ffffff;
@@ -62,14 +62,14 @@
   --h5-font-size: 1.1rem;
   --h6-font-size: 0.9rem;
 
-  --h1-color: var(--DwColor4);
-  --h2-color: var(--DwColor1);
+  --h1-color: var(--DwColor1);
+  --h2-color: var(--DwColor4);
   --h3-color: var(--DwColor1);
   --h4-color: var(--DwColor1);
   --h5-color: var(--DwColor1);
   --h6-color: var(--DwColor1);
 
-  --header-background: var(--DwColor6);
+  --header-background: var(--DwColor1);
   --header-image-background: rgba(25, 25, 25, 0.8);
   --header-image-color: rgba(255, 255, 255, 0.9);
 
@@ -95,7 +95,7 @@
   --navbar-top-color: var(--DwColor6);
 
   --navbar-background: var(--DwColor6);
-  --nav-color: var(--DwColor5);
+  --nav-color: var(--DwColor1);
   --nav-active-color: var(--DwColor2);
   --nav-hover-color: var(--DwColor2);
 

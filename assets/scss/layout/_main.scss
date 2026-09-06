@@ -6,20 +6,18 @@
 }
 
 .mod_article {
-    margin-bottom: 5rem;
+    //margin-bottom: 5rem;
 }
 
 .main-content > .mod_article,
 .left > .mod_article,
 .right > .mod_article,
-.footer .mod_article,
 .ce_ct_contentBox,
 .ce_ct_teaserBox,
 .ce_ct_priceBox {
     padding: 1.5rem;
     border-radius: var(--borderRadius);
     background: var(--DwColor6);
-    box-shadow: 0 .5rem 1.5rem rgba(31, 31, 31, .08);
 }
 
 .main-content > .mod_article + .mod_article {

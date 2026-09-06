@@ -1,0 +1,136 @@
+.mod_eventlist {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.mod_eventlist > .header {
+    grid-column: 1 / -1;
+    position: static;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    color: var(--DwColor6);
+    background: var(--DwColor1);
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.mod_eventlist > .event {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--DwColor6);
+    border: 1px solid rgba(41, 41, 41, 0.12);
+    border-radius: var(--borderRadius);
+}
+
+.mod_eventlist > .event h2 {
+    order: 1;
+    margin: 0;
+    padding: 1rem 1.25rem 0.5rem;
+    font-size: 1.25rem;
+}
+
+.mod_eventlist > .event h2 a {
+    color: var(--DwColor1);
+}
+
+.mod_eventlist > .event .time {
+    order: 2;
+    margin: 0;
+    padding: 0 1.25rem 0.75rem;
+    color: var(--DwColor3);
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.mod_eventlist > .event .content-text {
+    order: 3;
+    margin: 0;
+    padding: 0;
+}
+
+.mod_eventlist > .event .image_container {
+    margin: 0;
+    overflow: hidden;
+}
+
+.mod_eventlist > .event .image_container img {
+    display: block;
+    width: 100%;
+    height: 17rem;
+    object-fit: cover;
+}
+
+.mod_eventlist > .event .content-text > p {
+    margin: 0;
+    padding: 1rem 1.25rem 0;
+}
+
+.mod_eventlist > .event .more {
+    order: 4;
+    margin: 0;
+    padding: 1rem 1.25rem 1.25rem;
+}
+
+.mod_eventlist > .event .more a {
+    color: var(--DwColor2);
+    font-weight: 700;
+}
+
+.mod_eventlist .pagination {
+    grid-column: 1 / -1;
+}
+
+.mod_eventlist > .event.layout_list {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(14rem, 1fr) minmax(0, 1.25fr);
+    grid-template-rows: auto auto 1fr;
+}
+
+.mod_eventlist > .event.layout_list h2,
+.mod_eventlist > .event.layout_list .time,
+.mod_eventlist > .event.layout_list .content-text,
+.mod_eventlist > .event.layout_list .more {
+    grid-column: 2;
+}
+
+.mod_eventlist > .event.layout_list .image_container {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    height: 100%;
+}
+
+.mod_eventlist > .event.layout_list .image_container img {
+    height: 100%;
+    min-height: 16rem;
+}
+
+.mod_eventlist > .event.layout_list .content-text > p {
+    padding: 0 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .mod_eventlist > .event.layout_list {
+        display: flex;
+    }
+
+    .mod_eventlist > .event.layout_list .image_container img {
+        height: 14rem;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .mod_eventlist {
+        grid-template-columns: 1fr;
+    }
+
+    .mod_eventlist > .event .image_container img {
+        height: 14rem;
+    }
+}

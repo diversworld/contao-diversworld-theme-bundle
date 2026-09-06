@@ -1,0 +1,139 @@
+.mod_calendar {
+    margin-bottom: 2rem;
+}
+
+.mod_calendar h2 {
+    margin-bottom: 1.25rem;
+}
+
+.calendar,
+.minicalendar {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.25rem;
+    color: var(--DwColor5);
+    background: transparent;
+    font-size: 0.9375rem;
+}
+
+.calendar th,
+.minicalendar th {
+    padding: 0.75rem 0.5rem;
+    color: var(--DwColor5);
+    background: transparent;
+    font-weight: 700;
+    text-align: center;
+}
+
+.calendar th.head,
+.minicalendar th.head {
+    color: var(--DwColor6);
+    background: var(--DwColor1);
+}
+
+.calendar th.previous,
+.calendar th.next,
+.minicalendar th.previous,
+.minicalendar th.next {
+    background: var(--DwColor3);
+}
+
+.calendar td,
+.minicalendar td {
+    min-width: 3rem;
+    height: 4.5rem;
+    padding: 0.5rem;
+    vertical-align: top;
+    background: var(--DwColor7);
+    border: 1px solid rgba(41, 41, 41, 0.12);
+}
+
+.minicalendar td {
+    height: auto;
+    min-width: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.calendar td.empty,
+.minicalendar td.empty {
+    background: transparent;
+    border-color: transparent;
+}
+
+.calendar td.today,
+.minicalendar td.today {
+    border-color: var(--DwColor2);
+}
+
+.calendar td.active,
+.minicalendar td.active {
+    background: rgba(226, 0, 116, 0.1);
+    border-color: var(--DwColor2);
+}
+
+.calendar .header {
+    position: static;
+    color: var(--DwColor1);
+    background: transparent;
+    font-weight: 700;
+}
+
+.calendar .event {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
+.calendar .event a,
+.minicalendar a {
+    color: var(--DwColor2);
+    font-weight: 600;
+}
+
+.minicalendar th,
+.minicalendar td {
+    width: 14.285%;
+}
+
+.minicalendar th {
+    padding: 0.5rem 0.25rem;
+}
+
+.minicalendar td {
+    min-width: 0;
+    padding: 0.4rem 0.25rem;
+}
+
+.minicalendar th.head {
+    padding: 0.65rem 0.35rem;
+}
+
+.minicalendar th.previous,
+.minicalendar th.next {
+    background: transparent;
+}
+
+.minicalendar th.previous a,
+.minicalendar th.next a {
+    color: var(--DwColor2);
+}
+
+.minicalendar {
+    color: var(--DwColor5);
+    width: 20rem;
+}
+
+@media (max-width: 768px) {
+    .calendar {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .calendar th,
+    .calendar td {
+        min-width: 7rem;
+    }
+}
