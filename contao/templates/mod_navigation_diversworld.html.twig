@@ -1,9 +1,6 @@
 {% extends "@Contao/frontend_module/_base.html.twig" %}
 
 {% block content %}
-
-<header class="header">
-
     <div class="navbar-top">
         <div class="container">
             {{ insert_tag('theme::content::DW01/02')|raw }}
@@ -40,7 +37,7 @@
                     itemtype="https://schema.org/SiteNavigationElement"
                 >
 
-                    {{ request }}#{{ skipId }}
+                    <a href="{{ request }}#{{ skipId }}" class="invisible">
                         {{ skipNavigation }}
                     </a>
 
@@ -58,7 +55,4 @@
         </div>
 
     </div>
-
-</header>
-
 {% endblock %}

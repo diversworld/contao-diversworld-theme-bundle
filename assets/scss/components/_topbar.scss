@@ -1,23 +1,18 @@
 .navbar-top {
-    background:
-        linear-gradient(
-            90deg,
-            var(--navbar-top-background1),
-            var(--navbar-top-background2)
-        );
+    background: var(--navbar-top-background1);
 
     color: var(--navbar-top-color);
-    border-radius: 3rem;
-    font-size: .875rem;
+    border-radius: 0;
+    font-size: .8125rem;
 }
 
 .navbar-top .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.25rem;
 
-    min-height: 42px;
+    min-height: 32px;
 
     flex-wrap: wrap;
 }

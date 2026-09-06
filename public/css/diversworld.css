@@ -13,26 +13,26 @@
 /* ============================== */
 :root {
   /* Diversworld Colors */
-  --DwColor1: #4a6073;
-  --DwColor2: #e21c2a;
-  --DwColor3: #7894ad;
-  --DwColor4: #454545;
-  --DwColor5: #262626;
+  --DwColor1: #292929;
+  --DwColor2: #e20074;
+  --DwColor3: #7a7a7a;
+  --DwColor4: #1f1f1f;
+  --DwColor5: #2b2b2b;
   --DwColor6: #ffffff;
   --DwColor7: #F8F8F8;
-  --DwColor8: #748be0;
+  --DwColor8: #f4f4f4;
   --DwGrey: #808080;
   --DwTextColor1: var(--DwColor1);
   --DwTextColor2: var(--DwColor2);
   --DwTextColor3: var(--DwColor3);
   /* Primary + Page */
   --primaryColor: var(--DwColor2);
-  --page_background: #f4f5f6;
+  --page_background: #f5f5f5;
   --primary-background-text-color: var(--DwColor6);
   --secondary-background-text-color: var(--DwColor5);
   /* Gradient */
-  --gradientPrimaryColor1: var(--DwColor1);
-  --gradientPrimaryColor2: var(--DwColor3);
+  --gradientPrimaryColor1: var(--DwColor4);
+  --gradientPrimaryColor2: var(--DwColor1);
   --gradientSecondaryColor1: #e6eaed;
   --gradientSecondaryColor2: #f7f8f9;
   /* Buttons + Links */
@@ -40,11 +40,11 @@
   --button-color: var(--DwColor6);
   --button-background-hover: var(--DwColor1);
   --button-color-hover: var(--DwColor6);
-  --link-color: var(--DwColor1);
+  --link-color: var(--DwColor2);
   --link-color-hover: var(--DwColor2);
   /* Fonts */
   --mainFont: 'Muli', sans-serif;
-  --headingFont: 'Cabin', sans-serif;
+  --headingFont: 'Muli', sans-serif;
   /* Headlines */
   --h1-font-size: 2rem;
   --h2-font-size: 1.7rem;
@@ -58,11 +58,11 @@
   --h4-color: var(--DwColor1);
   --h5-color: var(--DwColor1);
   --h6-color: var(--DwColor1);
-  --header-background: var(--DwColor8);
+  --header-background: var(--DwColor6);
   --header-image-background: rgba(25, 25, 25, 0.8);
   --header-image-color: rgba(255, 255, 255, 0.9);
   /* Styling */
-  --borderRadius: 0px;
+  --borderRadius: 3rem;
   /* Content Slider */
   --slider-background: rgba(255, 255, 255, 0.8);
   --slider-headline-color: var(--DwColor5);
@@ -75,7 +75,7 @@
   --slider-control-color: var(--DwColor5);
   --slider-control-color-active: var(--DwTextColor2);
   /* Header and Navigation */
-  --navbar-top-background1: var(--DwColor5);
+  --navbar-top-background1: var(--DwColor4);
   --navbar-top-background2: var(--DwColor4);
   --navbar-top-color: var(--DwColor6);
   --navbar-background: var(--DwColor6);
@@ -270,11 +270,10 @@ h3 {
  * header.scss
  */
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
+  position: relative;
+  z-index: 10;
   background: var(--header-background);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 /* ==================================================
@@ -282,7 +281,7 @@ h3 {
 ================================================== */
 .navbar-main {
   background: var(--navbar-background);
-  border-radius: 3rem;
+  border-radius: 0;
 }
 
 .navbar-main .container {
@@ -290,7 +289,7 @@ h3 {
   grid-template-columns: 220px 1fr auto;
   align-items: center;
   gap: 2rem;
-  min-height: 100px;
+  min-height: 96px;
 }
 
 /* ==================================================
@@ -308,7 +307,7 @@ h3 {
 
 .navbar-logo img {
   display: block;
-  max-height: 80px;
+  max-height: 72px;
   width: auto;
 }
 
@@ -320,7 +319,8 @@ h3 {
   width: 48px;
   height: 48px;
   border: 0;
-  background: transparent;
+  color: var(--navbar-toggler-color);
+  background: var(--navbar-toggler-background);
   cursor: pointer;
 }
 
@@ -329,7 +329,7 @@ h3 {
   width: 28px;
   height: 3px;
   margin: 5px auto;
-  background: var(--navbar-toggler-background);
+  background: currentColor;
   transition: 0.3s;
 }
 
@@ -352,6 +352,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-column: 2;
 }
 
 /* ==================================================
@@ -388,6 +389,12 @@ h3 {
   color: var(--nav-hover-color);
 }
 
+.navigation > ul > li > a:focus-visible,
+.navbar-toggler:focus-visible {
+  outline: 3px solid var(--DwColor2);
+  outline-offset: 3px;
+}
+
 .navigation > ul > li > strong {
   color: var(--nav-active-color);
 }
@@ -404,7 +411,7 @@ h3 {
   padding: 0.75rem 0;
   list-style: none;
   background: var(--nav-dropdown-background);
-  border-top: 3px solid var(--DwColor1);
+  border-top: 3px solid var(--DwColor2);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   opacity: 0;
   visibility: hidden;
@@ -480,6 +487,9 @@ h3 {
   .navigation.is-open {
     display: block;
   }
+  .navigation.is-open {
+    display: block;
+  }
   .navigation > ul {
     flex-direction: column;
     align-items: stretch;
@@ -522,6 +532,23 @@ h3 {
   margin-bottom: 5rem;
 }
 
+.main-content > .mod_article,
+.left > .mod_article,
+.right > .mod_article,
+.footer .mod_article,
+.ce_ct_contentBox,
+.ce_ct_teaserBox,
+.ce_ct_priceBox {
+  padding: 1.5rem;
+  border-radius: var(--borderRadius);
+  background: var(--DwColor6);
+  box-shadow: 0 0.5rem 1.5rem rgba(31, 31, 31, 0.08);
+}
+
+.main-content > .mod_article + .mod_article {
+  margin-top: 1.5rem;
+}
+
 .content-headline {
   margin-bottom: 3rem;
 }
@@ -538,7 +565,12 @@ h3 {
   font-size: 0.9rem;
 }
 
-.footer h1, h2, h3, h4, h5, h6 {
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6 {
   color: var(--main-footer-color);
 }
 
@@ -599,18 +631,18 @@ h3 {
 
 /* Components */
 .navbar-top {
-  background: linear-gradient(90deg, var(--navbar-top-background1), var(--navbar-top-background2));
+  background: var(--navbar-top-background1);
   color: var(--navbar-top-color);
-  border-radius: 3rem;
-  font-size: 0.875rem;
+  border-radius: 0;
+  font-size: 0.8125rem;
 }
 
 .navbar-top .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-  min-height: 42px;
+  gap: 1.25rem;
+  min-height: 32px;
   flex-wrap: wrap;
 }
 
