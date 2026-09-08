@@ -139,6 +139,128 @@
     pointer-events: auto;
 }
 
+.main-content > .mod_article.slider.fullwidth {
+    width: 100vw;
+    margin-top: -1.5rem;
+    margin-right: calc(50% - 50vw);
+    margin-bottom: -1.5rem;
+    margin-left: calc(50% - 50vw);
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.content-swiper,
+.ce_ct_sliderElement,
+.ce_slider_element {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content-swiper .image,
+.content-swiper .image picture,
+.content-swiper .image img,
+.ce_ct_sliderElement .image,
+.ce_ct_sliderElement .image picture,
+.ce_ct_sliderElement .image img,
+.ce_slider_element .image,
+.ce_slider_element .image picture,
+.ce_slider_element .image img {
+    display: block;
+    width: 100%;
+}
+
+.content-swiper .image img,
+.ce_ct_sliderElement .image img,
+.ce_slider_element .image img {
+    height: clamp(20rem, 48vw, 42rem);
+    object-fit: cover;
+}
+
+.content-swiper .text,
+.ce_ct_sliderElement .text,
+.ce_slider_element .text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(0, 0, 0, .68), rgba(0, 0, 0, .12) 70%, transparent);
+}
+
+.content-swiper .text .container,
+.ce_ct_sliderElement .text .container,
+.ce_slider_element .text .container {
+    width: 100%;
+}
+
+.content-swiper .inside,
+.ce_ct_sliderElement .inside,
+.ce_slider_element .inside {
+    max-width: 42rem;
+    padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.content-swiper .inside h1,
+.content-swiper .inside h2,
+.content-swiper .inside h3,
+.content-swiper .inside h4,
+.content-swiper .inside h5,
+.content-swiper .inside h6,
+.content-swiper .inside a,
+.ce_ct_sliderElement .inside h1,
+.ce_ct_sliderElement .inside h2,
+.ce_ct_sliderElement .inside h3,
+.ce_ct_sliderElement .inside h4,
+.ce_ct_sliderElement .inside h5,
+.ce_ct_sliderElement .inside h6,
+.ce_ct_sliderElement .inside a,
+.ce_slider_element .inside h1,
+.ce_slider_element .inside h2,
+.ce_slider_element .inside h3,
+.ce_slider_element .inside h4,
+.ce_slider_element .inside h5,
+.ce_slider_element .inside h6,
+.ce_slider_element .inside a {
+    color: inherit;
+}
+
+.content-swiper .inside p:last-child,
+.ce_ct_sliderElement .inside p:last-child,
+.ce_slider_element .inside p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+    .main-content > .mod_article.slider.fullwidth {
+        width: 100vw;
+        margin-top: -1rem;
+        margin-right: calc(50% - 50vw);
+        margin-bottom: -1rem;
+        margin-left: calc(50% - 50vw);
+    }
+
+    .content-swiper .image img,
+    .ce_ct_sliderElement .image img,
+    .ce_slider_element .image img {
+        height: 28rem;
+    }
+
+    .content-swiper .text,
+    .ce_ct_sliderElement .text,
+    .ce_slider_element .text {
+        align-items: flex-end;
+        background: linear-gradient(0deg, rgba(0, 0, 0, .78), transparent 80%);
+    }
+
+    .content-swiper .inside,
+    .ce_ct_sliderElement .inside,
+    .ce_slider_element .inside {
+        padding-bottom: 3.5rem;
+    }
+}
+
 @media (max-width: 767px) {
     .swiper-button-prev,
     .swiper-button-next {

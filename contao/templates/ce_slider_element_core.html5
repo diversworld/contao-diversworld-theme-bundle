@@ -1,0 +1,52 @@
+<?php
+
+$this->wrapperAttributes = $this
+    ->attrs($this->cssID)
+    ->addClass([$this->class, 'block'])
+    ->addStyle($this->style ?? '')
+    ->mergeWith($this->wrapperAttributes)
+;
+
+$imageUuid = $this->picture ?: $this->singleSRC;
+
+?>
+
+<div<?= $this->wrapperAttributes ?>>
+    <?php if ($this->addImage && $imageUuid): ?>
+        <div class="image">
+            {{picture::<?= \Contao\StringUtil::binToUuid($imageUuid) ?>}}
+        </div>
+    <?php elseif ($this->playerSRC): ?>
+        <figure class="video_container">
+            <video autoplay loop muted playsinline>
+                <source type="video/mp4" src="<?= $this->playerSRC ?>">
+            </video>
+        </figure>
+    <?php endif; ?>
+
+    <?php if (strpos($this->class, 'only-image') === false): ?>
+        <div class="text">
+            <div class="container">
+                <div class="inside">
+                    <?php if ($this->subheadline): ?>
+                        <div class="subheadline"><?= $this->subheadline ?></div>
+                    <?php endif; ?>
+
+                    <?php if ($this->headline): ?>
+                        <<?= $this->hl ?>>
+                            <?php if ($this->page): ?><a href="<?= $this->page ?>"<?= $this->target ?><?= $this->rel ?>><?php endif; ?>
+                            <?= $this->headline ?>
+                            <?php if ($this->page): ?></a><?php endif; ?>
+                        </<?= $this->hl ?>>
+                    <?php endif; ?>
+
+                    <?= $this->text ?>
+
+                    <?php if ($this->page): ?>
+                        <a href="<?= $this->page ?>" class="readmore"<?= $this->target ?><?= $this->rel ?>><?= $this->linkText ?></a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
