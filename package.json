@@ -2,17 +2,17 @@
   "name": "contao-diversworld-theme-bundle",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Diversworld theme assets for Contao 6",
   "main": "index.js",
   "scripts": {
-    "build": "sass assets/scss/diversworld.scss public/css/diversworld.css --style=compressed --source-map && mkdir -p public/css public/webfonts public/js && cp node_modules/bootstrap/dist/css/bootstrap.min.css public/css/bootstrap.css && cp node_modules/@fortawesome/fontawesome-free/css/all.min.css public/css/fontawesome.css && cp node_modules/@fortawesome/fontawesome-free/webfonts/*.woff2 public/webfonts/ && cp assets/js/mobile-menu.js public/js/mobile-menu.js && custom_dir=\"${CONTAO_FILES_DIR:-../../htdocs/contao/files}/diversworld\" && if [ -f \"$custom_dir/scss/custom.scss\" ]; then mkdir -p \"$custom_dir/css\" && sass \"$custom_dir/scss/custom.scss\" \"$custom_dir/css/custom.css\" --style=compressed --no-source-map; fi",
+    "build": "mkdir -p public/css public/webfonts public/js && sass assets/scss/diversworld.scss public/css/diversworld.css --style=compressed --source-map && cp node_modules/bootstrap/dist/css/bootstrap.min.css public/css/bootstrap.css && cp node_modules/@fortawesome/fontawesome-free/css/all.min.css public/css/fontawesome.css && cp node_modules/@fortawesome/fontawesome-free/webfonts/*.woff2 public/webfonts/ && cp assets/js/diversworld.js public/js/diversworld.js && cp assets/js/navigation.js public/js/navigation.js && cp assets/js/mobile-menu.js public/js/mobile-menu.js && custom_dir=\"${CONTAO_FILES_DIR:-../../htdocs/contao/files}/diversworld\" && if [ -f \"$custom_dir/scss/custom.scss\" ]; then mkdir -p \"$custom_dir/css\" && sass \"$custom_dir/scss/custom.scss\" \"$custom_dir/css/custom.css\" --style=compressed --no-source-map; fi",
     "dev": "sass assets/scss/diversworld.scss public/css/diversworld.css --watch"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/diversworld/contao-diversworld-theme-bundle"
   },
-  "keywords": [],
+  "keywords": ["contao", "contao-6", "theme"],
   "author": "",
   "license": "ISC",
   "devDependencies": {

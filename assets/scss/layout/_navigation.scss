@@ -1,245 +1,324 @@
 /*
- * navigation.scss
+ * Contao navigation
+ *
+ * The Contao classes remain the structural API:
+ * .mod_navigation, .level_1, .level_2, .level_3,
+ * .submenu, .active and .trail.
+ *
+ * Theme classes are only used for the header layout and mobile drawer.
  */
 
-.navigation {
-    display: flex;
-    justify-content: center;
+.navbar-main {
+    position: relative;
+    z-index: 1000;
+
+    background: var(--navbar-background);
+}
+
+.navbar-main > .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
+    min-height: 5rem;
+}
+
+.navbar-logo {
+    min-width: 0;
+}
+
+.navigation {
     grid-column: 2;
 }
 
-/* ==================================================
-   Level 1
-================================================== */
-
-.navigation > ul {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-    gap: .25rem;
-
+.navigation ul {
     list-style: none;
-
     margin: 0;
     padding: 0;
 }
 
-.navigation > ul > li {
-    position: relative;
+.navigation .level_1 {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: .125rem;
 }
 
-.navigation > ul > li > a,
-.navigation > ul > li > strong {
+.navigation .level_1 > li {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+.navigation a,
+.navigation strong {
+    text-decoration: none;
+}
+
+.navigation .level_1 > li > a,
+.navigation .level_1 > li > strong {
     display: flex;
     align-items: center;
-
-    min-height: 100px;
-
-    padding: 0 1.25rem;
-
-    text-decoration: none;
-
-    font-size: 1rem;
-    font-weight: 600;
+    min-height: 5rem;
+    padding: 0 1rem;
 
     color: var(--nav-color);
-
-    transition: .25s ease;
+    font-weight: 600;
+    line-height: 1.25;
 }
 
-.navigation > ul > li > a:hover {
-    color: var(--nav-hover-color);
-}
-
-.navigation > ul > li > a:focus-visible,
-.navbar-toggler:focus-visible {
-    outline: 3px solid var(--DwColor2);
-    outline-offset: 3px;
-}
-
-.navigation > ul > li > strong {
+.navigation .level_1 > li > a:hover,
+.navigation .level_1 > li > a:focus-visible,
+.navigation .level_1 > li.trail > a,
+.navigation .level_1 > li.active > strong {
     color: var(--nav-active-color);
 }
 
-/* ==================================================
-   Dropdown Level 2
-================================================== */
+.navigation .level_1 > li.active > strong {
+    position: relative;
+}
 
-.navigation ul ul {
+.navigation .level_1 > li.active > strong::after,
+.navigation .level_1 > li.trail > a::after {
+    content: "";
     position: absolute;
+    right: 1rem;
+    bottom: .75rem;
+    left: 1rem;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--nav-active-color);
+}
 
-    top: 100%;
+.navigation .level_2,
+.navigation .level_3 {
+    position: absolute;
+    top: calc(100% - .25rem);
     left: 0;
 
-    min-width: 280px;
+    min-width: 16rem;
+    padding: .5rem;
 
-    margin: 0;
-    padding: .75rem 0;
-
-    list-style: none;
-
+    border-top: 3px solid var(--nav-active-color);
     background: var(--nav-dropdown-background);
-    border-top: 3px solid var(--DwColor2);
+    box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .18);
 
     opacity: 0;
     visibility: hidden;
-
-    transform: translateY(10px);
-
-    transition: .25s ease;
-
-    z-index: 100;
+    transform: translateY(.5rem);
+    transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
 }
 
-.navigation li:hover > ul {
+.navigation .level_3 {
+    top: -.5rem;
+    left: calc(100% + .5rem);
+}
+
+.navigation .submenu:hover > .level_2,
+.navigation .submenu:focus-within > .level_2,
+.navigation .level_2 .submenu:hover > .level_3,
+.navigation .level_2 .submenu:focus-within > .level_3 {
     opacity: 1;
     visibility: visible;
-
     transform: translateY(0);
 }
 
-.navigation ul ul li {
-    position: relative;
-}
-
-.navigation ul ul a {
+.navigation .level_2 a,
+.navigation .level_2 strong,
+.navigation .level_3 a,
+.navigation .level_3 strong {
     display: block;
-
-    padding: .85rem 1.25rem;
-
-    text-decoration: none;
+    padding: .8rem 1rem;
+    border-radius: .4rem;
 
     color: var(--nav-dropdown-color);
-
-    transition: .25s ease;
+    line-height: 1.35;
 }
 
-.navigation ul ul strong {
+.navigation .level_2 a:hover,
+.navigation .level_2 a:focus-visible,
+.navigation .level_3 a:hover,
+.navigation .level_3 a:focus-visible,
+.navigation .level_2 li.active > strong,
+.navigation .level_3 li.active > strong,
+.navigation .level_2 li.trail > a,
+.navigation .level_3 li.trail > a {
+    background: var(--nav-dropdown-hover-background);
+    color: var(--nav-dropdown-hover-color);
+}
+
+.submenu-toggle {
+    display: none;
+}
+
+.navbar-toggler {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+
+    width: 3rem;
+    height: 3rem;
+    padding: .6rem;
+
+    border: 0;
+    border-radius: .5rem;
+    background: var(--navbar-toggler-background);
+    cursor: pointer;
+}
+
+.navbar-toggler span {
     display: block;
-    padding: .85rem 1.25rem;
-    color: var(--nav-dropdown-hover-color);
-    font-weight: 700;
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--navbar-toggler-color);
 }
 
-.navigation ul ul li.active > strong {
-    background: var(--nav-dropdown-hover-background);
+.navigation a:focus-visible,
+.navigation strong:focus-visible,
+.navbar-toggler:focus-visible,
+.submenu-toggle:focus-visible {
+    outline: 3px solid var(--nav-active-color);
+    outline-offset: 3px;
 }
-
-.navigation ul ul a:hover {
-    background: var(--nav-dropdown-hover-background);
-    color: var(--nav-dropdown-hover-color);
-}
-
-/* ==================================================
-   Level 3
-================================================== */
-
-.navigation ul ul ul {
-    top: 0;
-    left: 100%;
-}
-
-/* ==================================================
-   Current Navigation Item
-================================================== */
-
-.navigation > ul > li.active > strong {
-    position: relative;
-}
-
-.navigation > ul > li.active > strong::after {
-    content: "";
-
-    position: absolute;
-
-    left: 1.25rem;
-    right: 1.25rem;
-    bottom: 24px;
-
-    height: 3px;
-
-    background: var(--DwColor2);
-}
-
-/* ==================================================
-   Mobile
-================================================== */
 
 @media (max-width: 1024px) {
+    html.navigation-open {
+        overflow: hidden;
+    }
+
+    .navbar-main > .container {
+        min-height: 4.5rem;
+    }
+
+    .navbar-toggler {
+        display: inline-flex;
+        flex-direction: column;
+        grid-column: 2;
+    }
 
     .navigation {
-        display: none;
-
         position: fixed;
-
         top: 0;
         right: 0;
+        bottom: 0;
 
-        width: 320px;
-        height: 100vh;
-
+        display: block;
+        width: min(22rem, 100%);
+        max-width: 100%;
         overflow-y: auto;
 
-        background: var(--navbar-mobile-background);
-
-        z-index: 9999;
-    }
-
-    .navigation.is-open {
-        display: block;
-    }
-
-    .navigation.is-open {
-        display: block;
-    }
-
-    .navigation > ul {
-        flex-direction: column;
-        align-items: stretch;
-
-        gap: 0;
-
         padding: 5rem 0 2rem;
+        background: var(--navbar-mobile-background);
+        box-shadow: -1rem 0 2rem rgba(0, 0, 0, .18);
+
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: transform .25s ease, visibility .25s ease;
     }
 
-    .navigation > ul > li > a,
-    .navigation > ul > li > strong {
-
-        min-height: auto;
-
-        padding: 1rem 1.5rem;
-
-        border-bottom:
-            1px solid var(--navbar-mobile-border-color);
+    .navigation.is-open {
+        visibility: visible;
+        transform: translateX(0);
     }
 
-    .navigation ul ul {
+    .navigation .level_1,
+    .navigation .level_2,
+    .navigation .level_3 {
         position: static;
-
+        display: block;
+        width: auto;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
         opacity: 1;
         visibility: visible;
-
         transform: none;
+        transition: none;
+    }
 
-        min-width: 100%;
+    .navigation .level_1 > li,
+    .navigation .level_2 > li,
+    .navigation .level_3 > li {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: stretch;
+        border-bottom: 1px solid var(--navbar-mobile-border-color);
+    }
 
+    .navigation .level_1 > li > a,
+    .navigation .level_1 > li > strong,
+    .navigation .level_2 a,
+    .navigation .level_2 strong,
+    .navigation .level_3 a,
+    .navigation .level_3 strong {
+        grid-column: 1;
+        min-height: 0;
+        padding: 1rem 1.25rem;
+        border-radius: 0;
+    }
+
+    .navigation .level_1 > li.active > strong::after,
+    .navigation .level_1 > li.trail > a::after {
+        display: none;
+    }
+
+    .navigation .submenu > .level_2,
+    .navigation .level_2 .submenu > .level_3 {
+        display: none;
+        grid-column: 1 / -1;
+        background: var(--navbar-mobile-dropdown-background);
+    }
+
+    .navigation .submenu.is-open > .level_2,
+    .navigation .level_2 .submenu.is-open > .level_3 {
+        display: block;
+    }
+
+    .navigation .level_2 a,
+    .navigation .level_2 strong {
+        padding-left: 2rem;
+    }
+
+    .navigation .level_3 a,
+    .navigation .level_3 strong {
+        padding-left: 3rem;
+    }
+
+    .submenu-toggle {
+        display: inline-flex;
+        grid-column: 2;
+        align-items: center;
+        justify-content: center;
+
+        width: 3.5rem;
+        padding: 0;
         border: 0;
-        background:
-            var(--navbar-mobile-dropdown-background);
+        border-left: 1px solid var(--navbar-mobile-border-color);
+        background: transparent;
+        color: var(--navbar-mobile-dropdown-toggle-color);
+        cursor: pointer;
     }
 
-    .navigation ul ul ul {
-        left: auto;
+    .submenu-toggle::before {
+        content: "⌄";
+        font-size: 1.5rem;
+        line-height: 1;
+        transition: transform .2s ease;
     }
 
-    .navigation ul ul a {
-        padding-left: 2.5rem;
+    .submenu.is-open > .submenu-toggle::before {
+        transform: rotate(180deg);
     }
+}
 
-    .navigation ul ul ul a {
-        padding-left: 4rem;
+@media (prefers-reduced-motion: reduce) {
+    .navigation,
+    .navigation .level_2,
+    .navigation .level_3,
+    .submenu-toggle::before {
+        transition: none;
     }
-
 }

@@ -1,513 +1,164 @@
-/**
- * Contao Legacy Slider
+/*
+ * Contao 6 content slider (Swiper)
  *
- * Verwendete Contao-Standardklassen:
+ * Contao 6 uses:
+ * .swiper
+ * .swiper-wrapper
+ * .swiper-slide
+ * .swiper-button-prev
+ * .swiper-button-next
+ * .swiper-pagination
  *
- * .ce_sliderStart
- * .content-slider
- * .slider-wrapper
- * .slider-control
- * .slider-prev
- * .slider-next
- * .slider-menu
+ * No custom JavaScript is required. Contao initializes Swiper itself.
  */
 
+.ce_swiper,
+.swiper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--slider-background);
+}
 
-/* ==========================================================================
-   Slider Container
-   ========================================================================== */
+.swiper-wrapper {
+    align-items: stretch;
+}
 
+.swiper-slide {
+    height: auto;
+}
+
+.swiper-slide > * {
+    width: 100%;
+}
+
+.swiper .ce_text,
+.swiper .ce_image,
+.swiper .content-text {
+    box-sizing: border-box;
+}
+
+.swiper .content-text,
+.swiper .ce_text {
+    width: min(100%, 75rem);
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 4rem) clamp(1rem, 4vw, 3rem) clamp(4.5rem, 8vw, 6rem);
+}
+
+.swiper .content-text figure,
+.swiper .ce_image figure {
+    margin: 0;
+}
+
+.swiper img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3rem;
+    height: 3rem;
+    margin-top: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .68);
+    color: #fff;
+    transition: background-color .2s ease, transform .2s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: rgba(0, 0, 0, .9);
+    transform: scale(1.05);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.swiper-pagination {
+    bottom: 1rem !important;
+}
+
+.swiper-pagination-bullet {
+    width: .7rem;
+    height: .7rem;
+    opacity: .65;
+    background: #fff;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/*
+ * Legacy support for existing Contao 5 installations.
+ * The legacy slider elements are not part of Contao 6 itself, but these rules
+ * keep migrated projects visually usable while their content is converted.
+ */
 .ce_sliderStart {
     position: relative;
     width: 100%;
     overflow: hidden;
-
-    margin: 0;
 }
 
-
-/* ==========================================================================
-   Slider
-   ========================================================================== */
-
-.content-slider {
+.ce_sliderStart .content-slider {
     position: relative;
     width: 100%;
     overflow: hidden;
-
-    background: #f5f5f5;
+    background: var(--slider-background);
 }
 
-
-/* ==========================================================================
-   Slider Wrapper
-   ========================================================================== */
-
-.content-slider .slider-wrapper {
-    position: relative;
-    display: flex;
-
-    width: 100%;
-}
-
-
-/* ==========================================================================
-   Slider Elemente
-   ========================================================================== */
-
-/*
- * Jedes direkte Content-Element innerhalb des Sliders
- * wird als einzelne Slide behandelt.
- */
-
-.content-slider .slider-wrapper > * {
-    position: relative;
-
-    flex: 0 0 100%;
-    width: 100%;
-    max-width: 100%;
-
+.ce_sliderStart .slider-wrapper > * {
     box-sizing: border-box;
 }
 
-
-/* ==========================================================================
-   Content Text
-   ========================================================================== */
-
-.content-slider .content-text {
-    display: grid;
-
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
-
-    width: 100%;
-    max-width: 1200px;
-
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-
-    box-sizing: border-box;
-}
-
-
-/* ==========================================================================
-   Überschrift
-   ========================================================================== */
-
-.content-slider .content-text h1,
-.content-slider .content-text h2,
-.content-slider .content-text h3,
-.content-slider .content-text h4,
-.content-slider .content-text h5,
-.content-slider .content-text h6 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-
-    line-height: 1.2;
-}
-
-
-/* ==========================================================================
-   Bild
-   ========================================================================== */
-
-.content-slider .content-text figure {
-    margin: 0;
-
-    width: 100%;
-}
-
-
-.content-slider .content-text figure img {
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-
-    height: auto;
-
-    border-radius: 0;
-
-    object-fit: cover;
-}
-
-
-/* ==========================================================================
-   Textbereich
-   ========================================================================== */
-
-.content-slider .content-text .rte {
-    width: 100%;
-}
-
-
-.content-slider .content-text .rte > :first-child {
-    margin-top: 0;
-}
-
-
-.content-slider .content-text .rte > :last-child {
-    margin-bottom: 0;
-}
-
-
-/* ==========================================================================
-   Media Above
-   Bild über dem Text
-   ========================================================================== */
-
-.content-slider .media--above {
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* ==========================================================================
-   Media Below
-   Bild unter dem Text
-   ========================================================================== */
-
-.content-slider .media--below {
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-
-/* ==========================================================================
-   Media Left
-   ========================================================================== */
-
-@media (min-width: 768px) {
-
-    .content-slider .media--left {
-        display: grid;
-
-        grid-template-columns: minmax(250px, 1fr) minmax(0, 1fr);
-
-        column-gap: 3rem;
-        align-items: center;
-    }
-}
-
-
-/* ==========================================================================
-   Media Right
-   ========================================================================== */
-
-@media (min-width: 768px) {
-
-    .content-slider .media--right {
-        display: grid;
-
-        grid-template-columns: minmax(0, 1fr) minmax(250px, 1fr);
-
-        column-gap: 3rem;
-        align-items: center;
-    }
-}
-
-
-/* ==========================================================================
-   Slider Navigation
-   ========================================================================== */
-
-.slider-control {
+.ce_sliderStart .slider-control {
     position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 1.5rem;
-
-    z-index: 20;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 10;
 
     display: flex;
-
     align-items: center;
-    justify-content: center;
-
-    gap: 1rem;
-
-    padding: 0 1rem;
-
-    box-sizing: border-box;
-
+    justify-content: space-between;
     pointer-events: none;
 }
 
-
-/* ==========================================================================
-   Previous / Next Buttons
-   ========================================================================== */
-
-.slider-control .slider-prev,
-.slider-control .slider-next {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-width: 2.75rem;
-    min-height: 2.75rem;
-
-    padding: 0.5rem 1rem;
-
-    border-radius: 0.25rem;
-
-    background: rgba(0, 0, 0, 0.75);
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-weight: 600;
-
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease,
-        opacity 0.2s ease;
-
+.ce_sliderStart .slider-prev,
+.ce_sliderStart .slider-next {
     pointer-events: auto;
 }
-
-
-.slider-control .slider-prev:hover,
-.slider-control .slider-next:hover {
-    background: rgba(0, 0, 0, 0.95);
-
-    color: #ffffff;
-
-    transform: translateY(-2px);
-}
-
-
-.slider-control .slider-prev:focus-visible,
-.slider-control .slider-next:focus-visible {
-    outline: 3px solid currentColor;
-
-    outline-offset: 3px;
-}
-
-
-/* ==========================================================================
-   Previous Button
-   ========================================================================== */
-
-.slider-control .slider-prev::before {
-    content: "‹";
-
-    margin-right: 0.5rem;
-
-    font-size: 1.5rem;
-    line-height: 1;
-}
-
-
-/* ==========================================================================
-   Next Button
-   ========================================================================== */
-
-.slider-control .slider-next::after {
-    content: "›";
-
-    margin-left: 0.5rem;
-
-    font-size: 1.5rem;
-    line-height: 1;
-}
-
-
-/* ==========================================================================
-   Slider Menu / Pagination
-   ========================================================================== */
-
-.slider-control .slider-menu {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 0.5rem;
-
-    pointer-events: auto;
-}
-
-
-/*
- * Contao erzeugt die Paginationselemente per JavaScript.
- */
-
-.slider-control .slider-menu a {
-    display: block;
-
-    width: 0.75rem;
-    height: 0.75rem;
-
-    overflow: hidden;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.5);
-
-    text-indent: -9999px;
-
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.slider-control .slider-menu a:hover {
-    background: rgba(255, 255, 255, 0.9);
-
-    transform: scale(1.15);
-}
-
-
-.slider-control .slider-menu a.active {
-    background: #ffffff;
-
-    transform: scale(1.2);
-}
-
-
-/* ==========================================================================
-   Tablet
-   ========================================================================== */
-
-@media (min-width: 768px) {
-
-    .content-slider .content-text {
-        padding:
-            4rem
-            3rem
-            6rem;
-    }
-
-
-    .slider-control {
-        bottom: 2rem;
-    }
-}
-
-
-/* ==========================================================================
-   Desktop
-   ========================================================================== */
-
-@media (min-width: 1024px) {
-
-    .content-slider .content-text {
-        padding:
-            5rem
-            4rem
-            7rem;
-    }
-
-
-    /*
-     * Navigation links und rechts vertikal positionieren
-     */
-
-    .slider-control {
-        top: 50%;
-        bottom: auto;
-
-        justify-content: space-between;
-
-        transform: translateY(-50%);
-
-        padding:
-            0
-            2rem;
-    }
-
-
-    .slider-control .slider-menu {
-        position: absolute;
-
-        left: 50%;
-        bottom: -18rem;
-
-        transform: translateX(-50%);
-    }
-
-
-    .slider-control .slider-prev,
-    .slider-control .slider-next {
-        min-width: 3rem;
-        min-height: 3rem;
-
-        padding: 0.5rem 0.75rem;
-
-        overflow: hidden;
-
-        font-size: 0;
-
-        border-radius: 50%;
-    }
-
-
-    .slider-control .slider-prev::before,
-    .slider-control .slider-next::after {
-        margin: 0;
-
-        font-size: 2rem;
-    }
-}
-
-
-/* ==========================================================================
-   Mobile Optimierung
-   ========================================================================== */
 
 @media (max-width: 767px) {
-
-    .content-slider .content-text {
-        padding:
-            2rem
-            1.25rem
-            5rem;
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 2.5rem;
+        height: 2.5rem;
     }
 
-
-    .slider-control {
-        bottom: 1rem;
-
-        gap: 0.5rem;
+    .swiper-button-prev {
+        left: .5rem;
     }
 
-
-    .slider-control .slider-prev,
-    .slider-control .slider-next {
-        min-height: 2.5rem;
-
-        padding:
-            0.5rem
-            0.75rem;
-
-        font-size: 0;
-    }
-
-
-    .slider-control .slider-prev::before,
-    .slider-control .slider-next::after {
-        margin: 0;
-
-        font-size: 1.75rem;
+    .swiper-button-next {
+        right: .5rem;
     }
 }
 
-
-/* ==========================================================================
-   Reduced Motion
-   ========================================================================== */
-
 @media (prefers-reduced-motion: reduce) {
-
-    .slider-control .slider-prev,
-    .slider-control .slider-next,
-    .slider-control .slider-menu a {
+    .swiper-button-prev,
+    .swiper-button-next,
+    .swiper-pagination-bullet {
         transition: none;
     }
 }
