@@ -91,20 +91,6 @@ contao-diversworld-theme-bundle/
 
 ## Konfiguration
 
-### Theme-Tags registrieren
-
-In `contao/config/config.php` können Theme-Tags für die Inhaltsorganisation definiert werden:
-
-```php
-$GLOBALS['tl_config']['theme_tags'] = [
-    'DW01/01',  // Kategorie 1.1
-    'DW01/02',  // Kategorie 1.2
-    'DW02/01',  // Kategorie 2.1
-];
-```
-
-Diese Tags erscheinen im Contao Backend in Artikel-Bearbeitungsfeldern, wenn das **Theme Helper Bundle** installiert ist.
-
 ### CSS Loading
 
 Das Bundle lädt CSS automatisch via `LayoutEventListener`:
@@ -181,8 +167,7 @@ Das Bundle implementiert WCAG 2.1 AA Standards:
 - **Node.js** (für SASS-Builds): ≥ 18.x
 
 ### Optional
-- **pdir/contao-theme-helper-bundle**: Für erweiterte Tag-Funktionalität
-- **contao-themes-net/theme-components-bundle**: Für zusätzliche Components
+- Keine zusätzlichen Theme- oder Component-Bundles erforderlich
 
 ## Kompatibilität
 
