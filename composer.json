@@ -5,7 +5,13 @@
     "license": "LGPL-3.0-or-later",
     "require": {
       "php": "^8.2",
-      "contao/core-bundle": "^5.7 || ^6.0"
+            "contao/calendar-bundle": "^5.7 || ^6.0",
+            "contao/comments-bundle": "^5.7 || ^6.0",
+            "contao/core-bundle": "^5.7 || ^6.0",
+            "contao/faq-bundle": "^5.7 || ^6.0",
+            "contao/news-bundle": "^5.7 || ^6.0",
+            "contao/newsletter-bundle": "^5.7 || ^6.0",
+            "terminal42/contao-folderpage": "^3.4"
     },
     "autoload": {
         "psr-4": {

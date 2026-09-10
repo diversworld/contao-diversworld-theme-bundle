@@ -12,12 +12,6 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class InitialFilesFolderMigration extends AbstractMigration
 {
-    private const FILES = [
-        '.public',
-        'scss/_custom_variables.scss',
-        'scss/custom.scss',
-    ];
-
     public function __construct(
         private readonly Connection $connection,
         private readonly Filesystem $filesystem,
@@ -38,9 +32,10 @@ class InitialFilesFolderMigration extends AbstractMigration
             return false;
         }
 
+        $sourceDirectory = dirname(__DIR__, 2).'/contao/files/diversworld';
         $filesDirectory = $this->getFilesDirectory();
 
-        foreach (self::FILES as $file) {
+        foreach ($this->getFiles($sourceDirectory) as $file) {
             if (!$this->filesystem->exists($filesDirectory.'/'.$file)) {
                 return true;
             }
@@ -54,11 +49,11 @@ class InitialFilesFolderMigration extends AbstractMigration
         $sourceDirectory = dirname(__DIR__, 2).'/contao/files/diversworld';
         $filesDirectory = $this->getFilesDirectory();
 
-        foreach (self::FILES as $file) {
+        foreach ($this->getFiles($sourceDirectory) as $file) {
             $source = $sourceDirectory.'/'.$file;
             $target = $filesDirectory.'/'.$file;
 
-            if ($this->filesystem->exists($source) && !$this->filesystem->exists($target)) {
+            if (!$this->filesystem->exists($target)) {
                 $this->filesystem->copy($source, $target);
             }
         }
@@ -71,5 +66,24 @@ class InitialFilesFolderMigration extends AbstractMigration
         return rtrim((string) $this->parameters->get('kernel.project_dir'), '/')
             .'/'.trim((string) $this->parameters->get('contao.upload_path'), '/')
             .'/diversworld';
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function getFiles(string $directory): array
+    {
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($directory, \FilesystemIterator::SKIP_DOTS),
+        );
+        $files = [];
+
+        foreach ($iterator as $file) {
+            if ($file->isFile()) {
+                $files[] = substr($file->getPathname(), strlen($directory) + 1);
+            }
+        }
+
+        return $files;
     }
 }
