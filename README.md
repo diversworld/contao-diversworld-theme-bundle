@@ -37,7 +37,17 @@ npm run build
 php bin/console cache:clear
 ```
 
-### 4. Theme im Backend auswählen
+### 4. Basisinstallation importieren
+
+Auf einer leeren Contao-Installation wird beim Ausführen der Contao-Migration eine vollständige Diversworld-Demostruktur angelegt. Sie enthält den Seitenbaum, Layouts, Artikel, Inhaltselemente, Frontend-Module sowie Beispielinhalte fuer News, Termine, FAQ, Newsletter und Formulare.
+
+```bash
+php bin/console contao:migrate --with-deletes
+```
+
+Die Migration wird nur ausgefuehrt, wenn die benoetigten Contao-Tabellen leer sind. Bereits angelegte Seiten, Artikel oder Inhalte werden nicht veraendert.
+
+### 5. Theme im Backend auswählen
 
 Im Contao Backend unter **Design → Layouts** das Theme "Diversworld" auswählen und den Layout-Typ konfigurieren.
 
