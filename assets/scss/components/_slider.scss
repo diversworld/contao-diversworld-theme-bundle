@@ -1,286 +1,576 @@
 /*
- * Contao 6 content slider (Swiper)
+ * Diversworld – Contao Core Content Slider
  *
- * Contao 6 uses:
- * .swiper
- * .swiper-wrapper
- * .swiper-slide
- * .swiper-button-prev
- * .swiper-button-next
- * .swiper-pagination
+ * Der Slider wird vollständig vom Contao-Core erzeugt.
  *
- * No custom JavaScript is required. Contao initializes Swiper itself.
+ * Erwartete Contao-Struktur:
+ *
+ * .ce_sliderStart
+ *   .content-slider
+ *     .slider-wrapper
+ *       .content-text
+ *       .content-text
+ *       ...
+ *     .slider-control
+ *       .slider-prev
+ *       .slider-menu
+ *       .slider-next
+ *
+ * Es wird kein eigenes Slider-Twig benötigt.
  */
 
-.ce_swiper,
-.swiper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background: var(--slider-background);
-}
 
-.swiper-wrapper {
-    align-items: stretch;
-}
+/* ==========================================================================
+   Slider – outer wrapper
+   ========================================================================== */
 
-.swiper-slide {
-    height: auto;
-}
-
-.swiper-slide > * {
-    width: 100%;
-}
-
-.swiper .ce_text,
-.swiper .ce_image,
-.swiper .content-text {
-    box-sizing: border-box;
-}
-
-.swiper .content-text,
-.swiper .ce_text {
-    width: min(100%, 75rem);
-    margin: 0 auto;
-    padding: clamp(1.5rem, 4vw, 4rem) clamp(1rem, 4vw, 3rem) clamp(4.5rem, 8vw, 6rem);
-}
-
-.swiper .content-text figure,
-.swiper .ce_image figure {
-    margin: 0;
-}
-
-.swiper img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 3rem;
-    height: 3rem;
-    margin-top: 0;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, .68);
-    color: #fff;
-    transition: background-color .2s ease, transform .2s ease;
-}
-
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-    background: rgba(0, 0, 0, .9);
-    transform: scale(1.05);
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-.swiper-pagination {
-    bottom: 1rem !important;
-}
-
-.swiper-pagination-bullet {
-    width: .7rem;
-    height: .7rem;
-    opacity: .65;
-    background: #fff;
-}
-
-.swiper-pagination-bullet-active {
-    opacity: 1;
-    transform: scale(1.2);
-}
-
-/*
- * Legacy support for existing Contao 5 installations.
- * The legacy slider elements are not part of Contao 6 itself, but these rules
- * keep migrated projects visually usable while their content is converted.
- */
 .ce_sliderStart {
     position: relative;
     width: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
 }
+
+
+/* ==========================================================================
+   Slider – viewport
+   ========================================================================== */
 
 .ce_sliderStart .content-slider {
     position: relative;
     width: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     background: var(--slider-background);
 }
 
+
+/* ==========================================================================
+   Slider – wrapper
+   ========================================================================== */
+
+.ce_sliderStart .slider-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+ * Contao bewegt die einzelnen Slider-Elemente per JavaScript.
+ * Deshalb darf der Wrapper nicht als normales Flex-Layout erzwungen werden.
+ */
+
 .ce_sliderStart .slider-wrapper > * {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+}
+
+
+/* ==========================================================================
+   Slider – slide content
+   ========================================================================== */
+
+.ce_sliderStart .slider-wrapper .content-text {
+    position: relative;
+    width: 100%;
+    min-height: clamp(20rem, 48vw, 42rem);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     box-sizing: border-box;
 }
 
+
+/* ==========================================================================
+   Slider – image
+   ========================================================================== */
+
+.ce_sliderStart .slider-wrapper .content-text figure {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: clamp(20rem, 48vw, 42rem);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.ce_sliderStart .slider-wrapper .content-text .image_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.ce_sliderStart .slider-wrapper .content-text img {
+    display: block;
+    width: 100%;
+    height: clamp(20rem, 48vw, 42rem);
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+/* ==========================================================================
+   Slider – text overlay
+   ========================================================================== */
+
+/*
+ * Der Contao-Core erzeugt hier:
+ *
+ * .content-text
+ *   figure
+ *   .rte
+ *
+ * Der Text wird über das Bild gelegt.
+ */
+
+.ce_sliderStart .slider-wrapper .content-text .rte {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding:
+        clamp(5rem, 12vw, 9rem)
+        clamp(1.5rem, 5vw, 5rem)
+        clamp(3.5rem, 7vw, 5rem);
+
+    box-sizing: border-box;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, .78) 0%,
+            rgba(0, 0, 0, .58) 35%,
+            rgba(0, 0, 0, .18) 72%,
+            rgba(0, 0, 0, 0) 100%
+        );
+}
+
+
+/*
+ * Inhalt innerhalb des Textbereichs begrenzen.
+ *
+ * Da Contao hier normalerweise direkt den RTE-Inhalt ausgibt,
+ * wird die Lesebreite über die direkten Kinder begrenzt.
+ */
+
+.ce_sliderStart .slider-wrapper .content-text .rte > * {
+    width: min(100%, 52rem);
+    margin-right: auto;
+}
+
+
+/* ==========================================================================
+   Slider – typography
+   ========================================================================== */
+
+.ce_sliderStart .slider-wrapper .content-text .rte,
+.ce_sliderStart .slider-wrapper .content-text .rte p,
+.ce_sliderStart .slider-wrapper .content-text .rte h1,
+.ce_sliderStart .slider-wrapper .content-text .rte h2,
+.ce_sliderStart .slider-wrapper .content-text .rte h3,
+.ce_sliderStart .slider-wrapper .content-text .rte h4,
+.ce_sliderStart .slider-wrapper .content-text .rte h5,
+.ce_sliderStart .slider-wrapper .content-text .rte h6 {
+    color: #fff;
+}
+
+
+.ce_sliderStart .slider-wrapper .content-text .rte p:last-child {
+    margin-bottom: 0;
+}
+
+
+.ce_sliderStart .slider-wrapper .content-text .rte a {
+    color: #fff;
+}
+
+
+.ce_sliderStart .slider-wrapper .content-text .rte a:hover {
+    color: #fff;
+}
+
+
+/* ==========================================================================
+   Slider – navigation
+   ========================================================================== */
+
 .ce_sliderStart .slider-control {
     position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    left: 1rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 10;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    width: 100%;
+    margin: 0;
+    padding:
+        0.75rem
+        clamp(1rem, 3vw, 2rem);
+
+    box-sizing: border-box;
+
     pointer-events: none;
 }
 
+
+/* --------------------------------------------------------------------------
+   Previous / next
+   -------------------------------------------------------------------------- */
+
 .ce_sliderStart .slider-prev,
 .ce_sliderStart .slider-next {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 3rem;
+    min-height: 3rem;
+    padding: .5rem .9rem;
+
+    border: 0;
+    border-radius: 50%;
+
+    color: #fff;
+    background: rgba(0, 0, 0, .68);
+
+    font-size: 0;
+    line-height: 1;
+    text-decoration: none;
+
+    pointer-events: auto;
+
+    transition:
+        background-color .2s ease,
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+
+/*
+ * Pfeile über CSS erzeugen.
+ *
+ * Dadurch sind wir nicht auf eine bestimmte Font-Awesome-Version
+ * angewiesen.
+ */
+
+.ce_sliderStart .slider-prev::before,
+.ce_sliderStart .slider-next::before {
+    display: block;
+
+    width: .65rem;
+    height: .65rem;
+
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+
+    content: '';
+}
+
+
+.ce_sliderStart .slider-prev::before {
+    transform: rotate(-135deg);
+    margin-left: .2rem;
+}
+
+
+.ce_sliderStart .slider-next::before {
+    transform: rotate(45deg);
+    margin-right: .2rem;
+}
+
+
+.ce_sliderStart .slider-prev:hover,
+.ce_sliderStart .slider-next:hover,
+.ce_sliderStart .slider-prev:focus-visible,
+.ce_sliderStart .slider-next:focus-visible {
+    color: #fff;
+    background: rgba(0, 0, 0, .9);
+    transform: scale(1.05);
+}
+
+
+/* ==========================================================================
+   Slider – pagination
+   ========================================================================== */
+
+.ce_sliderStart .slider-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 2rem;
+
+    margin: 0 auto;
+    padding: .25rem .75rem;
+
+    border-radius: 2rem;
+
+    background: rgba(0, 0, 0, .42);
+
     pointer-events: auto;
 }
 
+
+/*
+ * Contao erzeugt die Navigationspunkte innerhalb von .slider-menu.
+ *
+ * Je nach Contao-Version können die Punkte als Links bzw. Buttons
+ * ausgegeben werden. Deshalb werden beide Varianten berücksichtigt.
+ */
+
+.ce_sliderStart .slider-menu a,
+.ce_sliderStart .slider-menu button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: .7rem;
+    height: .7rem;
+
+    margin: 0 .25rem;
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    color: transparent;
+    background: rgba(255, 255, 255, .55);
+
+    font-size: 0;
+    line-height: 1;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color .2s ease,
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+
+.ce_sliderStart .slider-menu a:hover,
+.ce_sliderStart .slider-menu a:focus-visible,
+.ce_sliderStart .slider-menu button:hover,
+.ce_sliderStart .slider-menu button:focus-visible {
+    background: rgba(255, 255, 255, .9);
+    transform: scale(1.15);
+}
+
+
+/*
+ * Aktiver Navigationspunkt.
+ *
+ * Contao kann je nach Version / Slider-Implementierung
+ * unterschiedliche Klassen verwenden.
+ */
+
+.ce_sliderStart .slider-menu .active,
+.ce_sliderStart .slider-menu .current,
+.ce_sliderStart .slider-menu a.active,
+.ce_sliderStart .slider-menu button.active,
+.ce_sliderStart .slider-menu a[aria-current='true'],
+.ce_sliderStart .slider-menu button[aria-current='true'] {
+    background: #fff;
+    transform: scale(1.2);
+}
+
+
+/* ==========================================================================
+   Slider – fullwidth article
+   ========================================================================== */
+
 .main-content > .mod_article.slider.fullwidth {
     width: 100vw;
+
     margin-top: -1.5rem;
     margin-right: calc(50% - 50vw);
     margin-bottom: -1.5rem;
     margin-left: calc(50% - 50vw);
+
     padding: 0;
+
     border-radius: 0;
     background: transparent;
 }
 
-.content-swiper,
-.ce_ct_sliderElement,
-.ce_slider_element {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+
+/*
+ * Der Slider selbst darf in einem Fullwidth-Artikel ebenfalls
+ * keine zusätzlichen Abstände bekommen.
+ */
+
+.main-content > .mod_article.slider.fullwidth .ce_sliderStart,
+.main-content > .mod_article.slider.fullwidth .content-slider {
+    margin: 0;
+    border-radius: 0;
 }
 
-.content-swiper .image,
-.content-swiper .image picture,
-.content-swiper .image img,
-.ce_ct_sliderElement .image,
-.ce_ct_sliderElement .image picture,
-.ce_ct_sliderElement .image img,
-.ce_slider_element .image,
-.ce_slider_element .image picture,
-.ce_slider_element .image img {
-    display: block;
-    width: 100%;
+
+/* ==========================================================================
+   Slider – accessibility
+   ========================================================================== */
+
+.ce_sliderStart .slider-prev:focus-visible,
+.ce_sliderStart .slider-next:focus-visible,
+.ce_sliderStart .slider-menu a:focus-visible,
+.ce_sliderStart .slider-menu button:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, .9);
+    outline-offset: 3px;
 }
 
-.content-swiper .image img,
-.ce_ct_sliderElement .image img,
-.ce_slider_element .image img {
-    height: clamp(20rem, 48vw, 42rem);
-    object-fit: cover;
-}
 
-.content-swiper .text,
-.ce_ct_sliderElement .text,
-.ce_slider_element .text {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    background: linear-gradient(90deg, rgba(0, 0, 0, .68), rgba(0, 0, 0, .12) 70%, transparent);
-}
-
-.content-swiper .text .container,
-.ce_ct_sliderElement .text .container,
-.ce_slider_element .text .container {
-    width: 100%;
-}
-
-.content-swiper .inside,
-.ce_ct_sliderElement .inside,
-.ce_slider_element .inside {
-    max-width: 42rem;
-    padding: clamp(1.5rem, 5vw, 4rem);
-}
-
-.content-swiper .inside h1,
-.content-swiper .inside h2,
-.content-swiper .inside h3,
-.content-swiper .inside h4,
-.content-swiper .inside h5,
-.content-swiper .inside h6,
-.content-swiper .inside a,
-.ce_ct_sliderElement .inside h1,
-.ce_ct_sliderElement .inside h2,
-.ce_ct_sliderElement .inside h3,
-.ce_ct_sliderElement .inside h4,
-.ce_ct_sliderElement .inside h5,
-.ce_ct_sliderElement .inside h6,
-.ce_ct_sliderElement .inside a,
-.ce_slider_element .inside h1,
-.ce_slider_element .inside h2,
-.ce_slider_element .inside h3,
-.ce_slider_element .inside h4,
-.ce_slider_element .inside h5,
-.ce_slider_element .inside h6,
-.ce_slider_element .inside a {
-    color: inherit;
-}
-
-.content-swiper .inside p:last-child,
-.ce_ct_sliderElement .inside p:last-child,
-.ce_slider_element .inside p:last-child {
-    margin-bottom: 0;
-}
+/* ==========================================================================
+   Slider – mobile
+   ========================================================================== */
 
 @media (max-width: 767px) {
+
     .main-content > .mod_article.slider.fullwidth {
         width: 100vw;
+
         margin-top: -1rem;
         margin-right: calc(50% - 50vw);
         margin-bottom: -1rem;
         margin-left: calc(50% - 50vw);
     }
 
-    .content-swiper .image img,
-    .ce_ct_sliderElement .image img,
-    .ce_slider_element .image img {
+
+    .ce_sliderStart .slider-wrapper .content-text {
+        min-height: 28rem;
+    }
+
+
+    .ce_sliderStart .slider-wrapper .content-text figure,
+    .ce_sliderStart .slider-wrapper .content-text .image_container {
+        min-height: 28rem;
+    }
+
+
+    .ce_sliderStart .slider-wrapper .content-text img {
         height: 28rem;
     }
 
-    .content-swiper .text,
-    .ce_ct_sliderElement .text,
-    .ce_slider_element .text {
-        align-items: flex-end;
-        background: linear-gradient(0deg, rgba(0, 0, 0, .78), transparent 80%);
+
+    .ce_sliderStart .slider-wrapper .content-text .rte {
+        padding:
+            5rem
+            1.25rem
+            4.25rem;
+
+        background:
+            linear-gradient(
+                to top,
+                rgba(0, 0, 0, .82) 0%,
+                rgba(0, 0, 0, .60) 45%,
+                rgba(0, 0, 0, 0) 100%
+            );
     }
 
-    .content-swiper .inside,
-    .ce_ct_sliderElement .inside,
-    .ce_slider_element .inside {
-        padding-bottom: 3.5rem;
+
+    .ce_sliderStart .slider-control {
+        padding:
+            .5rem
+            .75rem;
+    }
+
+
+    .ce_sliderStart .slider-prev,
+    .ce_sliderStart .slider-next {
+        min-width: 2.5rem;
+        min-height: 2.5rem;
+    }
+
+
+    .ce_sliderStart .slider-menu {
+        min-height: 1.75rem;
+        padding: .2rem .5rem;
+    }
+
+
+    .ce_sliderStart .slider-menu a,
+    .ce_sliderStart .slider-menu button {
+        width: .55rem;
+        height: .55rem;
+
+        margin-right: .2rem;
+        margin-left: .2rem;
     }
 }
 
-@media (max-width: 767px) {
-    .swiper-button-prev,
-    .swiper-button-next {
-        width: 2.5rem;
-        height: 2.5rem;
+
+/* ==========================================================================
+   Slider – very small screens
+   ========================================================================== */
+
+@media (max-width: 480px) {
+
+    .ce_sliderStart .slider-wrapper .content-text {
+        min-height: 24rem;
     }
 
-    .swiper-button-prev {
-        left: .5rem;
+
+    .ce_sliderStart .slider-wrapper .content-text figure,
+    .ce_sliderStart .slider-wrapper .content-text .image_container {
+        min-height: 24rem;
     }
 
-    .swiper-button-next {
-        right: .5rem;
+
+    .ce_sliderStart .slider-wrapper .content-text img {
+        height: 24rem;
+    }
+
+
+    .ce_sliderStart .slider-wrapper .content-text .rte {
+        padding:
+            4rem
+            1rem
+            3.75rem;
+    }
+
+
+    .ce_sliderStart .slider-prev,
+    .ce_sliderStart .slider-next {
+        min-width: 2.25rem;
+        min-height: 2.25rem;
     }
 }
+
+
+/* ==========================================================================
+   Slider – reduced motion
+   ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-    .swiper-button-prev,
-    .swiper-button-next,
-    .swiper-pagination-bullet {
+
+    .ce_sliderStart .slider-prev,
+    .ce_sliderStart .slider-next,
+    .ce_sliderStart .slider-menu a,
+    .ce_sliderStart .slider-menu button {
         transition: none;
     }
 }
