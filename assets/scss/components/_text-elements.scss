@@ -8,6 +8,28 @@
     box-shadow: 0 0.5rem 1.5rem rgba(41, 41, 41, 0.06);
 }
 
+.bordered-heading {
+    position: relative;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--DwColor2);
+}
+
+.bordered-heading.text-sm-right {
+    text-align: right;
+}
+
+.bordered-heading.text-sm-center {
+    text-align: center;
+}
+
+.content-list ol {
+    list-style: decimal;
+}
+
+.content-list ul {
+    list-style: disc;
+}
+
 .content-table table {
     width: 100%;
     margin: 0;
@@ -104,4 +126,53 @@
     .content-table table {
         min-width: 34rem;
     }
+}
+
+.ce_accordion {
+    margin: 1.5rem 0;
+    border: 1px solid rgba(41, 41, 41, 0.12);
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+}
+
+.ce_accordion .toggler {
+    position: relative;
+    padding: 1rem 3rem 1rem 1.25rem;
+    color: var(--DwColor1);
+    background: var(--DwColor6);
+    border-bottom: 1px solid rgba(41, 41, 41, 0.12);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ce_accordion .toggler::after {
+    position: absolute;
+    top: 50%;
+    right: 1.25rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    content: '';
+    transform: translateY(-65%) rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.ce_accordion .toggler.active {
+    color: var(--DwColor6);
+    background: var(--DwColor1);
+}
+
+.ce_accordion .toggler.active::after {
+    transform: translateY(-30%) rotate(225deg);
+}
+
+.ce_accordion .accordion {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.25s ease;
+}
+
+.ce_accordion .accordion > div {
+    padding: 1.25rem;
 }

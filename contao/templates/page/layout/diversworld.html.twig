@@ -18,13 +18,14 @@
     {% slot main %}
         <main class="main">
             <div class="container">
-                {% set has_left_sidebar = slots.left is defined %}
-                {% set has_right_sidebar = slots.right is defined %}
+                {% set layout_columns = layout.cols|default('1cl') %}
+                {% set has_left_sidebar = layout_columns in ['2cll', '3cl'] %}
+                {% set has_right_sidebar = layout_columns in ['2clr', '3cl'] %}
                 <div class="row g-4{% if has_left_sidebar %} has-left-sidebar{% endif %}{% if has_right_sidebar %} has-right-sidebar{% endif %}">
 
                     {% if has_left_sidebar %}
                         <aside class="left col-12 col-lg-3">
-                            {{ slots.left }}
+                            {{ _slots.left|raw }}
                         </aside>
                     {% endif %}
 
@@ -34,7 +35,7 @@
 
                     {% if has_right_sidebar %}
                         <aside class="right col-12 col-lg-3">
-                            {{ slots.right }}
+                            {{ _slots.right|raw }}
                         </aside>
                     {% endif %}
 
