@@ -10,6 +10,39 @@
 
 }
 
+.hero {
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero > .container {
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.hero > .container > .mod_article {
+    margin: 0;
+    padding: 0;
+}
+
+.hero .content-image,
+.hero .content-image figure {
+    width: 100%;
+    height: min(350px, 32vw);
+    min-height: 220px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.hero .content-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 /* ==================================================
    Main Header
 ================================================== */
@@ -100,4 +133,17 @@
         display: block;
     }
 
+    .hero .content-image,
+    .hero .content-image figure {
+        height: min(320px, 42vw);
+    }
+
+}
+
+@media (max-width: 540px) {
+    .hero .content-image,
+    .hero .content-image figure {
+        height: 220px;
+        min-height: 0;
+    }
 }

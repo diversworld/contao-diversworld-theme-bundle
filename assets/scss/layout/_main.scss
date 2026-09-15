@@ -20,10 +20,169 @@
     background: var(--DwColor6);
 }
 
+.ce_ct_contentBox,
+.ce_ct_priceBox {
+    border: 1px solid rgba(41, 41, 41, 0.12);
+    box-shadow: 0 0.5rem 1.5rem rgba(41, 41, 41, 0.08);
+}
+
+.row.content-element-group:has(> .ce_ct_contentBox) {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.row.content-element-group:has(> .ce_ct_contentBox) > .ce_ct_contentBox {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+}
+
+.ce_ct_contentBox .inside,
+.ce_ct_priceBox .inside {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ce_ct_contentBox h2,
+.ce_ct_priceBox h2 {
+    margin-top: 0;
+    color: var(--DwColor1);
+    font-size: 1.35rem;
+    line-height: 1.2;
+}
+
+.ce_ct_contentBox .pageLink,
+.ce_ct_priceBox .first-link,
+.ce_ct_priceBox .second-link {
+    margin-top: auto;
+}
+
+.ce_ct_contentBox .pageLink a,
+.ce_ct_priceBox .first-link a,
+.ce_ct_priceBox .second-link a {
+    color: var(--DwColor2);
+    font-weight: 700;
+}
+
+.ce_ct_priceBox {
+    position: relative;
+}
+
+.ce_ct_priceBox .popular-label {
+    margin: -1.5rem -1.5rem 1rem;
+    padding: 0.55rem 1.5rem;
+    color: var(--DwColor6);
+    background: var(--DwColor2);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.ce_ct_priceBox .price {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(41, 41, 41, 0.12);
+}
+
+.ce_ct_priceBox .amount {
+    color: var(--DwColor1);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.ce_ct_priceBox .label {
+    color: var(--DwColor3);
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+.ce_ct_priceBox .text {
+    flex: 1;
+}
+
+.ce_ct_priceBox .first-link {
+    margin-top: 1.5rem;
+}
+
+.ce_ct_priceBox .first-link a {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: var(--DwColor6);
+    background: var(--DwColor2);
+    text-align: center;
+    text-decoration: none;
+}
+
+.ce_ct_priceBox .first-link a:hover {
+    background: var(--button-background-hover);
+}
+
+.ce_ct_priceBox .second-link {
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
+.main-content > .mod_article:has(> .ce_ct_priceBox) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.main-content > .mod_article:has(> .ce_ct_priceBox) > .row {
+    grid-column: 1 / -1;
+}
+
+.main-content > .mod_article:has(> .ce_ct_priceBox) > .ce_ct_priceBox {
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    border: 1px solid rgba(41, 41, 41, 0.12);
+}
+
+.full-size-layout > .mod_article.two-columns:has(> .ce_ct_priceBox) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.full-size-layout > .mod_article.three-columns:has(> .ce_ct_priceBox) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .main-content > .mod_article + .mod_article {
     margin-top: 1.5rem;
 }
 
 .content-headline {
     margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+    .row.content-element-group:has(> .ce_ct_contentBox) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .main-content > .mod_article:has(> .ce_ct_priceBox) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 540px) {
+    .row.content-element-group:has(> .ce_ct_contentBox) {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content > .mod_article:has(> .ce_ct_priceBox) {
+        grid-template-columns: 1fr;
+    }
 }

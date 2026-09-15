@@ -1,0 +1,107 @@
+.content-table,
+.content-list {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: var(--DwColor6);
+    border: 1px solid rgba(41, 41, 41, 0.12);
+    border-radius: var(--borderRadius);
+    box-shadow: 0 0.5rem 1.5rem rgba(41, 41, 41, 0.06);
+}
+
+.content-table table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    color: var(--DwColor5);
+}
+
+.content-table th,
+.content-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(41, 41, 41, 0.12);
+    text-align: left;
+    vertical-align: top;
+}
+
+.content-table th {
+    color: var(--DwColor6);
+    background: var(--DwColor1);
+    font-weight: 700;
+}
+
+.content-table tr:nth-child(even) td {
+    background: rgba(41, 41, 41, 0.035);
+}
+
+.content-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.content-list ol,
+.content-list ul {
+    margin: 0;
+    padding-left: 1.75rem;
+}
+
+.content-list li + li {
+    margin-top: 0.5rem;
+}
+
+.content-list li::marker {
+    color: var(--DwColor2);
+    font-weight: 700;
+}
+
+.main .ce_ct_featureElement {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 0;
+    padding: 1.25rem;
+    background: var(--DwColor6);
+    border: 1px solid rgba(41, 41, 41, 0.12);
+    border-radius: var(--borderRadius);
+}
+
+.main .ce_ct_featureElement .icon {
+    display: flex;
+    flex: 0 0 2.75rem;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--DwColor6);
+    background: var(--DwColor2);
+    border-radius: 50%;
+    font-size: 1.1rem;
+}
+
+.main .ce_ct_featureElement .feature-text {
+    min-width: 0;
+}
+
+.main .ce_ct_featureElement .feature-text p:last-child {
+    margin-bottom: 0;
+}
+
+.main .ce_ct_featureElement .feature-text a {
+    color: var(--DwColor1);
+    font-weight: 700;
+}
+
+.main .ce_ct_featureElement .headline {
+    color: var(--DwColor1);
+    font-weight: 700;
+}
+
+@media (max-width: 540px) {
+    .content-table,
+    .content-list {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    .content-table table {
+        min-width: 34rem;
+    }
+}

@@ -444,6 +444,253 @@
 }
 
 
+/*
+ * Diversworld – Contao Core "Slider Element" (Swiper)
+ *
+ * Der Slider wird vollständig vom Contao-Core erzeugt (contao-components/swiper).
+ * Jedes verschachtelte Inhaltselement wird automatisch als .swiper-slide gerendert.
+ *
+ * Tatsächliche Contao-Struktur (contao/core-bundle content_element/swiper.html.twig):
+ *
+ * .content-swiper
+ *   .swiper
+ *     .swiper-wrapper
+ *       .swiper-slide
+ *         .content-text.media.media--above
+ *           figure > img + figcaption
+ *           .rte
+ *       ...
+ *     .swiper-button-prev
+ *     .swiper-button-next
+ *     .swiper-pagination
+ *
+ * Der verschachtelte Text-/Bildinhalt liegt standardmäßig im Textfluss
+ * (Bild oben, Text darunter). Für einen Hero-Slider wird der Text hier
+ * als Caption über das Bild gelegt.
+ *
+ * Es wird kein eigenes Slider-Twig benötigt.
+ */
+
+
+/* ==========================================================================
+   Slider Element – outer wrapper
+   ========================================================================== */
+
+.content-swiper {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--slider-background);
+}
+
+
+/* ==========================================================================
+   Slider Element – viewport / wrapper
+   ========================================================================== */
+
+.content-swiper .swiper {
+    position: relative;
+    width: 100%;
+}
+
+.content-swiper .swiper-wrapper {
+    align-items: stretch;
+}
+
+
+/* ==========================================================================
+   Slider Element – slide
+   ========================================================================== */
+
+.content-swiper .swiper-slide {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: clamp(20rem, 48vw, 42rem);
+    overflow: hidden;
+}
+
+
+/*
+ * Der Textinhalt (figure + rte) füllt die gesamte Slide und legt
+ * den Text als Caption über das Bild.
+ */
+
+.content-swiper .swiper-slide .content-text {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content-swiper .swiper-slide .content-text figure {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.content-swiper .swiper-slide .content-text img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.content-swiper .swiper-slide .content-text figcaption {
+    display: none;
+}
+
+.content-swiper .swiper-slide .content-text .rte {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding:
+        clamp(5rem, 12vw, 9rem)
+        clamp(1.5rem, 5vw, 5rem)
+        clamp(3.5rem, 7vw, 5rem);
+
+    box-sizing: border-box;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, .78) 0%,
+            rgba(0, 0, 0, .58) 35%,
+            rgba(0, 0, 0, .18) 72%,
+            rgba(0, 0, 0, 0) 100%
+        );
+}
+
+.content-swiper .swiper-slide .content-text > h1,
+.content-swiper .swiper-slide .content-text > h2,
+.content-swiper .swiper-slide .content-text > h3 {
+    position: absolute;
+    z-index: 2;
+    top: clamp(1.5rem, 5vw, 3rem);
+    left: clamp(1.5rem, 5vw, 5rem);
+    margin: 0;
+    color: #fff;
+}
+
+.content-swiper .swiper-slide .content-text .rte,
+.content-swiper .swiper-slide .content-text .rte p,
+.content-swiper .swiper-slide .content-text .rte h1,
+.content-swiper .swiper-slide .content-text .rte h2,
+.content-swiper .swiper-slide .content-text .rte h3 {
+    color: #fff;
+}
+
+.content-swiper .swiper-slide .content-text .rte p:last-child {
+    margin-bottom: 0;
+}
+
+.content-swiper .swiper-slide .content-text .rte a {
+    color: #fff;
+}
+
+
+/* ==========================================================================
+   Slider Element – navigation (prev / next)
+   ========================================================================== */
+
+.content-swiper .swiper-button-prev,
+.content-swiper .swiper-button-next {
+    width: 3rem;
+    height: 3rem;
+
+    color: var(--slider-control-color);
+    background: rgba(0, 0, 0, .68);
+    border-radius: 50%;
+
+    transition:
+        background-color .2s ease,
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+.content-swiper .swiper-button-prev::after,
+.content-swiper .swiper-button-next::after {
+    font-size: 1rem;
+    color: var(--slider-button-color);
+}
+
+.content-swiper .swiper-button-prev:hover,
+.content-swiper .swiper-button-next:hover {
+    background: rgba(0, 0, 0, .9);
+    transform: scale(1.05);
+}
+
+
+/* ==========================================================================
+   Slider Element – pagination
+   ========================================================================== */
+
+.content-swiper .swiper-pagination {
+    position: absolute;
+    bottom: clamp(.75rem, 2vw, 1.25rem);
+    z-index: 3;
+}
+
+.content-swiper .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, .55);
+    opacity: 1;
+
+    transition:
+        background-color .2s ease,
+        transform .2s ease;
+}
+
+.content-swiper .swiper-pagination-bullet-active {
+    background: var(--slider-control-color-active);
+    transform: scale(1.2);
+}
+
+
+/* ==========================================================================
+   Slider Element – fullwidth article
+   ========================================================================== */
+
+.main-content > .mod_article.slider.fullwidth .content-swiper {
+    margin: 0;
+    border-radius: 0;
+}
+
+.header > .mod_article.slider.fullwidth,
+.header > .mod_article.slider.fullwidth .content-swiper {
+    width: 100vw;
+    max-width: none;
+    margin-right: 0;
+    margin-left: 0;
+    border-radius: 0;
+}
+
+
+/* ==========================================================================
+   Slider Element – accessibility
+   ========================================================================== */
+
+.content-swiper .swiper-button-prev:focus-visible,
+.content-swiper .swiper-button-next:focus-visible,
+.content-swiper .swiper-pagination-bullet:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, .9);
+    outline-offset: 3px;
+}
+
+
 /* ==========================================================================
    Slider – mobile
    ========================================================================== */
@@ -520,6 +767,34 @@
         margin-right: .2rem;
         margin-left: .2rem;
     }
+
+
+    .content-swiper .swiper-slide {
+        height: 28rem;
+    }
+
+
+    .content-swiper .swiper-slide .content-text .rte {
+        padding:
+            5rem
+            1.25rem
+            4.25rem;
+
+        background:
+            linear-gradient(
+                to top,
+                rgba(0, 0, 0, .82) 0%,
+                rgba(0, 0, 0, .60) 45%,
+                rgba(0, 0, 0, 0) 100%
+            );
+    }
+
+
+    .content-swiper .swiper-button-prev,
+    .content-swiper .swiper-button-next {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }
 
 
@@ -558,6 +833,26 @@
         min-width: 2.25rem;
         min-height: 2.25rem;
     }
+
+
+    .content-swiper .swiper-slide {
+        height: 24rem;
+    }
+
+
+    .content-swiper .swiper-slide .content-text .rte {
+        padding:
+            4rem
+            1rem
+            3.75rem;
+    }
+
+
+    .content-swiper .swiper-button-prev,
+    .content-swiper .swiper-button-next {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
 }
 
 
@@ -571,6 +866,13 @@
     .ce_sliderStart .slider-next,
     .ce_sliderStart .slider-menu a,
     .ce_sliderStart .slider-menu button {
+        transition: none;
+    }
+
+
+    .content-swiper .swiper-button-prev,
+    .content-swiper .swiper-button-next,
+    .content-swiper .swiper-pagination-bullet {
         transition: none;
     }
 }
