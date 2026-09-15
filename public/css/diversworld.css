@@ -1018,7 +1018,7 @@ h3 {
 }
 
 .bordered-heading.text-sm-right {
-  text-align: right;
+  text-align: right !important;
 }
 
 .bordered-heading.text-sm-center {
