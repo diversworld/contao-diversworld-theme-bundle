@@ -68,12 +68,32 @@ class InitialSiteStructureMigration extends AbstractMigration
 
         try {
             $this->connection->transactional(function () use ($stream): void {
-                while (false !== ($statement = gzgets($stream))) {
-                    $statement = trim($statement);
+                $buffer = '';
 
-                    if ('' !== $statement) {
-                        $this->connection->executeStatement($statement);
+                while (false !== ($line = gzgets($stream))) {
+                    $trimmedLine = trim($line);
+
+                    // Skip empty lines and dump comments; they never contain executable SQL.
+                    if ('' === $trimmedLine || str_starts_with($trimmedLine, '--') || str_starts_with($trimmedLine, '#')) {
+                        continue;
                     }
+
+                    $buffer .= $line;
+
+                    // Statements can span multiple lines (e.g. CREATE TABLE); only execute
+                    // once a full statement, terminated by a semicolon, has been buffered.
+                    if (str_ends_with($trimmedLine, ';')) {
+                        $statement = trim($buffer);
+                        $buffer = '';
+
+                        if ('' !== $statement) {
+                            $this->connection->executeStatement($statement);
+                        }
+                    }
+                }
+
+                if ('' !== trim($buffer)) {
+                    $this->connection->executeStatement(trim($buffer));
                 }
             });
         } finally {
