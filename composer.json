@@ -10,8 +10,7 @@
             "contao/core-bundle": "^5.7 || ^6.0",
             "contao/faq-bundle": "^5.7 || ^6.0",
             "contao/news-bundle": "^5.7 || ^6.0",
-            "contao/newsletter-bundle": "^5.7 || ^6.0",
-            "terminal42/contao-folderpage": "^3.4"
+            "contao/newsletter-bundle": "^5.7 || ^6.0"
     },
     "autoload": {
         "psr-4": {
