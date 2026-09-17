@@ -3,8 +3,9 @@
  */
 
 .header {
-    position: relative;
-    z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
     background: var(--header-background);
 

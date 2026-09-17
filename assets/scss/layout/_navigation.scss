@@ -322,3 +322,76 @@
         transition: none;
     }
 }
+
+/* ==================================================
+   Subpage navigation (e.g. sidebar "Unterseiten-Navigation")
+   Renders with Contao's default module markup (.mod_navigation),
+   so it is styled here to match the header navigation's look.
+================================================== */
+
+.mod_navigation .level_1 {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mod_navigation .level_1 a,
+.mod_navigation .level_1 strong {
+    display: block;
+    padding: .6rem .75rem;
+    border-radius: .4rem;
+
+    color: var(--nav-color);
+    font-weight: 600;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+.mod_navigation .level_1 a:hover,
+.mod_navigation .level_1 a:focus-visible {
+    color: var(--nav-hover-color);
+}
+
+.mod_navigation .level_1 li.active > strong,
+.mod_navigation .level_1 li.trail > a {
+    color: var(--nav-active-color);
+}
+
+.mod_navigation .level_2,
+.mod_navigation .level_3 {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1rem;
+}
+
+.mod_navigation .level_2 a,
+.mod_navigation .level_2 strong,
+.mod_navigation .level_3 a,
+.mod_navigation .level_3 strong {
+    display: block;
+    padding: .5rem .75rem;
+    border-radius: .4rem;
+
+    color: var(--nav-dropdown-color);
+    background: var(--nav-dropdown-background);
+    font-weight: 400;
+    line-height: 1.35;
+    text-decoration: none;
+}
+
+.mod_navigation .level_2 a:hover,
+.mod_navigation .level_2 a:focus-visible,
+.mod_navigation .level_3 a:hover,
+.mod_navigation .level_3 a:focus-visible,
+.mod_navigation .level_2 li.active > strong,
+.mod_navigation .level_3 li.active > strong,
+.mod_navigation .level_2 li.trail > a,
+.mod_navigation .level_3 li.trail > a {
+    background: var(--nav-dropdown-hover-background);
+    color: var(--nav-dropdown-hover-color);
+}
+
+.mod_navigation .level_2 {
+    margin-top: .25rem;
+    margin-bottom: .5rem;
+}
