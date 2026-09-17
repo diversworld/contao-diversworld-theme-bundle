@@ -3,6 +3,26 @@
     "description": "Diversworld theme for Contao CMS",
     "type": "contao-bundle",
     "license": "LGPL-3.0-or-later",
+    "keywords": [
+        "contao",
+        "bundle",
+        "diveclub",
+        "theme"
+    ],
+    "type": "contao-bundle",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Eckhard Becker",
+            "email": "info@diversworld.eu",
+            "homepage": "https://github.com/diversworld",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/diversworld/contao-diveclub-bundle/issues",
+        "source": "https://github.com/diversworld/contao-diveclub-bundle"
+    },
     "require": {
       "php": "^8.2",
             "contao/calendar-bundle": "^5.7 || ^6.0",
