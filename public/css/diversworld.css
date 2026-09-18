@@ -784,7 +784,7 @@ h3 {
 .main {
   background: var(--page_background);
   padding-top: 2rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 .main-content > .mod_article,
@@ -968,9 +968,13 @@ h3 {
 .footer {
   background: var(--main-footer-background);
   color: var(--main-footer-color);
-  padding: 3rem 0;
-  margin-top: 4rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
   font-size: 0.9rem;
+  max-width: var(--container-maxwidth);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--borderRadius);
 }
 
 .footer .mod_article {
@@ -1002,7 +1006,6 @@ h3 {
 }
 
 .copyright-footer {
-  padding-block: 2rem;
   text-align: center;
 }
 
@@ -1011,6 +1014,8 @@ h3 {
   max-width: var(--container-maxwidth);
   margin-left: auto;
   margin-right: auto;
+  padding-right: calc(var(--bs-gutter-x) * 0);
+  padding-left: calc(var(--bs-gutter-x) * 0);
 }
 
 /* Utilities */
