@@ -62,6 +62,8 @@
   --header-background: var(--DwColor1);
   --header-image-background: rgba(25, 25, 25, 0.8);
   --header-image-color: rgba(255, 255, 255, 0.9);
+  --header-maxwidth: 1200px;
+  --container-maxwidth: 1280px;
   /* Styling */
   --borderRadius: 2rem;
   /* Content Slider */
@@ -274,7 +276,14 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--header-background);
+  width: 100%;
+  max-width: var(--container-maxwidth);
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  border-radius: var(--borderRadius);
+  overflow: hidden;
 }
 
 .hero {
@@ -283,9 +292,9 @@ h3 {
 }
 
 .hero > .container {
-  max-width: none;
   padding-right: 0;
   padding-left: 0;
+  border-radius: var(--borderRadius);
 }
 
 .hero > .container > .mod_article {
@@ -772,8 +781,8 @@ h3 {
 
 .main {
   background: var(--page_background);
-  padding-top: 4rem;
-  padding-bottom: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
 
 .main-content > .mod_article,
@@ -997,11 +1006,9 @@ h3 {
 
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: var(--container-maxwidth);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 
 /* Utilities */
@@ -2360,6 +2367,7 @@ h3 {
   padding: 0;
   overflow: hidden;
   background: var(--slider-background);
+  border-radius: var(--borderRadius);
 }
 
 /* ==========================================================================

@@ -7,7 +7,16 @@
     top: 0;
     z-index: 1000;
 
-    background: var(--header-background);
+    width: 100%;
+    max-width: var(--container-maxwidth);
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+
+    //background: var(--header-background);
 
 }
 
@@ -17,9 +26,10 @@
 }
 
 .hero > .container {
-    max-width: none;
+    //max-width: var(--header-maxwidth);
     padding-right: 0;
     padding-left: 0;
+    border-radius: var(--borderRadius);
 }
 
 .hero > .container > .mod_article {
