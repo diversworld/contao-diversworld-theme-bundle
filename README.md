@@ -37,15 +37,15 @@ npm run build
 php bin/console cache:clear
 ```
 
-### 4. Basisinstallation importieren
+### 4. Beispielseite optional installieren
 
-Auf einer leeren Contao-Installation wird beim Ausführen der Contao-Migration eine vollständige Diversworld-Demostruktur angelegt. Sie enthält den Seitenbaum, Layouts, Artikel, Inhaltselemente, Frontend-Module sowie Beispielinhalte fuer News, Termine, FAQ, Newsletter und Formulare.
+Die Migration **Install optional Diversworld Theme example site** wird im Contao-Installtool als ausstehende Migration angeboten. Wenn sie ausgewählt und ausgeführt wird, installiert sie eine vollständige Diversworld-Beispielseite mit Seitenbaum, Layouts, Artikeln, Inhaltselementen, Frontend-Modulen sowie Beispielinhalten für News, Termine, FAQ, Newsletter und Formulare.
 
 ```bash
 php bin/console contao:migrate --with-deletes
 ```
 
-Die Migration wird nur ausgefuehrt, wenn die benoetigten Contao-Tabellen leer sind. Bereits angelegte Seiten, Artikel oder Inhalte werden nicht veraendert.
+Die Migration wird nur angeboten, wenn die benötigten Contao-Tabellen leer sind. Auf einer bereits verwendeten Installation wird sie nicht ausgeführt und verändert keine vorhandenen Seiten, Artikel oder Inhalte. Im CLI wird sie zusammen mit den übrigen ausstehenden Migrationen ausgeführt; im Contao-Installtool kann der Nutzer sie abwählen.
 
 ### 5. Theme im Backend auswählen
 

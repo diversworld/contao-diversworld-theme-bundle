@@ -38,7 +38,7 @@ class InitialSiteStructureMigration extends AbstractMigration
 
     public function getName(): string
     {
-        return 'Install Diversworld Theme site structure';
+        return 'Install optional Diversworld Theme example site';
     }
 
     public function shouldRun(): bool
