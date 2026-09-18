@@ -1,0 +1,11 @@
+/*
+ * Diversworld custom variables
+ *
+ * Override theme variables here without changing diversworld.css.
+ */
+
+:root {
+    /* --DwColor2: #e21c2a; */
+    /* --nav-hover-color: var(--DwColor2); */
+    /* --main-footer-background: var(--DwColor5); */
+}

@@ -21,7 +21,7 @@ class InitialFilesFolderMigration extends AbstractMigration
 
     public function getName(): string
     {
-        return 'Install Diversworld Theme custom SCSS files';
+        return 'Install Diversworld Theme custom frontend files';
     }
 
     public function shouldRun(): bool
@@ -58,7 +58,7 @@ class InitialFilesFolderMigration extends AbstractMigration
             }
         }
 
-        return $this->createResult(true, 'Diversworld custom SCSS files were installed.');
+        return $this->createResult(true, 'Diversworld custom frontend files were installed.');
     }
 
     private function getFilesDirectory(): string

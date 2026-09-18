@@ -15,6 +15,8 @@ class LayoutEventListener
         $GLOBALS['TL_CSS'][] = 'bundles/contaodiversworldtheme/css/bootstrap.css|static';
         $GLOBALS['TL_CSS'][] = 'bundles/contaodiversworldtheme/css/diversworld.css|static';
         $GLOBALS['TL_CSS'][] = 'bundles/contaodiversworldtheme/css/fontawesome.css|static';
+        $GLOBALS['TL_CSS'][] = 'bundles/contaodiversworldtheme/css/custom_variables.css|static';
+        $GLOBALS['TL_CSS'][] = 'files/diversworld/css/custom_variables.css|static';
         $GLOBALS['TL_CSS'][] = 'files/diversworld/css/custom.css|static';
 
         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaodiversworldtheme/js/navigation.js|static';
