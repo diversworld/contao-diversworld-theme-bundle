@@ -13,8 +13,8 @@
     margin-left: auto;
     margin-bottom: 2rem;
     margin-top: 1rem;
-    border-radius: var(--borderRadius);
-    overflow: hidden;
+    border-radius: var(--border-radius);
+    overflow: visible;
 
     //background: var(--header-background);
 
@@ -29,7 +29,7 @@
     //max-width: var(--header-maxwidth);
     padding-right: 0;
     padding-left: 0;
-    border-radius: var(--borderRadius);
+    border-radius: var(--border-radius);
 }
 
 .hero > .container > .mod_article {

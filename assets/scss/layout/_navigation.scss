@@ -11,7 +11,8 @@
 .navbar-main {
     position: relative;
     z-index: 1000;
-
+    border-bottom-right-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
     background: var(--navbar-background);
 }
 

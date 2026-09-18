@@ -282,8 +282,8 @@ h3 {
   margin-left: auto;
   margin-bottom: 2rem;
   margin-top: 1rem;
-  border-radius: var(--borderRadius);
-  overflow: hidden;
+  border-radius: var(--border-radius);
+  overflow: visible;
 }
 
 .hero {
@@ -294,7 +294,7 @@ h3 {
 .hero > .container {
   padding-right: 0;
   padding-left: 0;
-  border-radius: var(--borderRadius);
+  border-radius: var(--border-radius);
 }
 
 .hero > .container > .mod_article {
@@ -411,6 +411,8 @@ h3 {
 .navbar-main {
   position: relative;
   z-index: 1000;
+  border-bottom-right-radius: var(--borderRadius);
+  border-bottom-left-radius: var(--borderRadius);
   background: var(--navbar-background);
 }
 
@@ -1045,6 +1047,8 @@ h3 {
   color: var(--navbar-top-color);
   border-radius: 0;
   font-size: 0.8125rem;
+  border-top-right-radius: var(--borderRadius);
+  border-top-left-radius: var(--borderRadius);
 }
 
 .navbar-top .container {
