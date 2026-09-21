@@ -1,0 +1,26 @@
+<div class="mod_dw_modal">
+    <button type="button" class="dw-modal-trigger{% if linkClass %} {{ linkClass }}{% endif %}" data-dw-modal-open="{{ dialogId }}">
+        {{ linkText }}
+    </button>
+
+    <dialog id="{{ dialogId }}" class="dw-modal dw-modal--{{ size }}">
+        <div class="dw-modal__dialog">
+            <div class="dw-modal__header">
+                {% if headline %}
+                    <{{ hl }} class="dw-modal__title">{{ headline }}</{{ hl }}>
+                {% endif %}
+                <button type="button" class="dw-modal__close" data-dw-modal-close aria-label="{{ 'MSC.close'|trans|default('Schließen') }}">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="dw-modal__body">
+                {% if form %}
+                    {{ form|raw }}
+                {% endif %}
+                {% if text %}
+                    {{ text|raw }}
+                {% endif %}
+            </div>
+        </div>
+    </dialog>
+</div>

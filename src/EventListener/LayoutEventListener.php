@@ -22,5 +22,6 @@ class LayoutEventListener
         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaodiversworldtheme/js/navigation.js|static';
         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaodiversworldtheme/js/mobile-menu.js|static';
         $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaodiversworldtheme/js/accordion.js|static';
+        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/contaodiversworldtheme/js/modal.js|static';
     }
 }

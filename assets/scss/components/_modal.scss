@@ -1,0 +1,81 @@
+.dw-modal-trigger {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.5rem;
+    color: var(--button-color);
+    background: var(--button-background);
+    border: 0;
+    border-radius: var(--borderRadius);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+
+.dw-modal-trigger:hover {
+    background: var(--button-background-hover);
+    color: var(--button-color-hover);
+}
+
+.dw-modal {
+    width: min(90vw, 40rem);
+    max-height: 85vh;
+    padding: 0;
+    color: var(--DwColor5);
+    background: var(--DwColor6);
+    border: 0;
+    border-radius: var(--borderRadius);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+}
+
+.dw-modal::backdrop {
+    background: rgba(25, 25, 25, 0.6);
+}
+
+.dw-modal--narrow {
+    width: min(90vw, 28rem);
+}
+
+.dw-modal--wide {
+    width: min(95vw, 60rem);
+}
+
+.dw-modal__dialog {
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+}
+
+.dw-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(41, 41, 41, 0.12);
+}
+
+.dw-modal__title {
+    margin: 0;
+    color: var(--DwColor1);
+}
+
+.dw-modal__close {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    color: var(--DwColor5);
+    background: transparent;
+    border: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.dw-modal__close:hover {
+    color: var(--DwColor2);
+}
+
+.dw-modal__body {
+    padding: 1.5rem;
+    overflow-y: auto;
+}

@@ -1,0 +1,20 @@
+{% set hasLink = url|length > 0 %}
+<div class="ce_ct_featureElement block">
+    <div class="icon">
+        {% if hasLink %}<a href="{{ url }}"{% if linkTitle %} title="{{ linkTitle }}"{% endif %}{% if target %} target="_blank" rel="noopener"{% endif %}>{% endif %}
+        <i class="{{ icon }}"></i>
+        {% if hasLink %}</a>{% endif %}
+    </div>
+    <div class="feature-text">
+        {% if headline %}
+            <div class="headline"><{{ hl }}>{{ headline }}</{{ hl }}></div>
+        {% endif %}
+        <div class="text">
+            {% if hasLink %}
+                <p><a href="{{ url }}"{% if target %} target="_blank" rel="noopener"{% endif %}>{{ linkTitle }}</a></p>
+            {% else %}
+                {{ text|raw }}
+            {% endif %}
+        </div>
+    </div>
+</div>

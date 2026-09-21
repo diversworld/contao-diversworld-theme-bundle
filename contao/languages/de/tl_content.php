@@ -5,3 +5,4 @@ $GLOBALS['TL_LANG']['tl_content']['dw_linkText'] = ['Link-Text','Der Link-Text w
 $GLOBALS['TL_LANG']['tl_content']['dw_linkTitle'] = ['Link-Titel','Der Link-Titel wird als title-Attribut im HTML-Markup eingefügt.'];
 $GLOBALS['TL_LANG']['tl_content']['target'] = ['In einem neuen Fenster öffnen','Den Link in einem neuen Browserfenster öffnen.'];
 $GLOBALS['TL_LANG']['tl_content']['dw_subHeadline'] = ['Unterüberschrift','Hier können Sie dem Inhaltselement eine Unterüberschrift hinzufügen.'];
+$GLOBALS['TL_LANG']['tl_content']['dwIcon'] = ['Icon-Klasse', 'Die Font-Awesome-Klasse des Icons, z. B. "fas fa-phone" oder "fab fa-facebook-f".'];

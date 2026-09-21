@@ -41,8 +41,13 @@
     margin: 0;
 }
 
-.ce_ct_contentBox .inside,
-.ce_ct_priceBox .inside {
+.ce_ct_contentBox .inside {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ce_ct_priceBox {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -85,30 +90,47 @@
 }
 
 .ce_ct_priceBox .price {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
+    display: block;
     margin: 0 0 1.25rem;
     padding-bottom: 1.25rem;
     border-bottom: 1px solid rgba(41, 41, 41, 0.12);
 }
 
-.ce_ct_priceBox .amount {
+.ce_ct_priceBox .price strong {
+    margin-right: 0.5rem;
     color: var(--DwColor1);
     font-size: 2rem;
     font-weight: 700;
     line-height: 1;
 }
 
-.ce_ct_priceBox .label {
-    color: var(--DwColor3);
-    font-size: 0.8rem;
-    text-align: right;
+.ce_ct_priceBox .ce_list {
+    flex: 1;
+    margin: 0 0 1.5rem;
 }
 
-.ce_ct_priceBox .text {
-    flex: 1;
+.ce_ct_priceBox .ce_list ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    list-style: none;
+}
+
+.ce_ct_priceBox .ce_list li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--DwColor5);
+}
+
+.ce_ct_priceBox .ce_list li + li {
+    margin-top: 0.6rem;
+}
+
+.ce_ct_priceBox .ce_list li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--DwColor2);
+    font-weight: 700;
 }
 
 .ce_ct_priceBox .first-link {

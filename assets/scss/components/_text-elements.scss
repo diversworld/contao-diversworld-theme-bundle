@@ -8,6 +8,13 @@
     box-shadow: 0 0.5rem 1.5rem rgba(41, 41, 41, 0.06);
 }
 
+/* Empty ce_text element used as a plain divider (replaces a raw <hr>) */
+.ce_text.content-divider {
+    height: 0;
+    margin: 2rem 0;
+    border-top: 1px solid rgba(41, 41, 41, 0.12);
+}
+
 .bordered-heading {
     position: relative;
     padding-bottom: 0.75rem;
