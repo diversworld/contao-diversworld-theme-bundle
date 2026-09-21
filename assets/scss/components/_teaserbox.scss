@@ -107,7 +107,10 @@
 
 .ce_ct_teaserBox h2,
 .ce_ct_teaserBox h3 {
+    min-height: 2.6em;
     margin-top: 1.5rem;
+    margin-bottom: 0;
+    line-height: 1.3;
 }
 
 .ce_ct_teaserBox .pageLink {
