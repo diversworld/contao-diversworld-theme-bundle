@@ -1,0 +1,19 @@
+{% extends '@Contao/content_element/text.html.twig' %}
+
+{# Optional Font Awesome icon (dwIcon field) turns a plain core "text" element
+   into an icon+headline+text feature box, reusing the .ce_ct_featureElement styles. #}
+{% set icon = data.dwIcon|default('') %}
+
+{% block attributes %}{{ attributes.addClass('ce_ct_featureElement', icon is not empty) }}{% endblock %}
+
+{% block inner %}
+    {% if icon %}
+        <div class="icon"><i class="{{ icon }}"></i></div>
+        <div class="feature-text">
+            {% if headline.text %}<div class="headline">{{ block('headline_component') }}</div>{% endif %}
+            <div class="text">{{ block('content') }}</div>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
