@@ -1,3 +1,8 @@
+{% set element_html_id = cssID[0]|default(null) %}
+{% set element_css_classes = (class|default('') ~ ' navigation-header')|trim %}
+{% set type = type|default('navigation') %}
+{% set headline = {text: headline|default(''), tag_name: hl|default('h2')} %}
+
 {% extends "@Contao/frontend_module/_base.html.twig" %}
 
 {% block content %}

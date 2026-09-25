@@ -61,7 +61,6 @@
     align-items: center;
     min-height: 5rem;
     padding: 0 1rem;
-
     color: var(--nav-color);
     font-weight: 600;
     line-height: 1.25;
@@ -74,6 +73,7 @@
     color: var(--nav-active-color);
 }
 
+.navigation .level_1 > li.trail > a,
 .navigation .level_1 > li.active > strong {
     position: relative;
 }
@@ -109,10 +109,25 @@
     transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
 }
 
+.navigation .level_2 > li {
+    position: relative;
+}
+
 .navigation .level_3 {
-    left: calc(100% + 0.2rem);
-    top: auto;
-    margin-top: -3rem;
+    left: calc(100% + .7rem);
+    top: 0;
+}
+
+// Keep the flyout open while crossing the gap from its parent item.
+@media (min-width: 1025px) {
+    .navigation .level_3::before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        bottom: 0;
+        right: 100%;
+        width: .7rem;
+    }
 }
 
 .navigation .submenu:hover > .level_2,
@@ -327,11 +342,11 @@
 
 /* ==================================================
    Subpage navigation (e.g. sidebar "Unterseiten-Navigation")
-   Renders with Contao's default module markup (.mod_navigation),
+   Renders with Contao's default module markup (.mod_navigation:not(.navigation-header)),
    so it is styled here to match the header navigation's look.
 ================================================== */
 
-.mod_navigation {
+.mod_navigation:not(.navigation-header) {
     padding: .5rem;
 
     /*
@@ -341,73 +356,72 @@
     */
 }
 
-.mod_navigation .level_1 {
+.mod_navigation:not(.navigation-header) .level_1 {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.mod_navigation .level_1 > li + li {
+.mod_navigation:not(.navigation-header) .level_1 > li + li {
     margin-top: .15rem;
 }
 
-.mod_navigation .level_1 a,
-.mod_navigation .level_1 strong {
+.mod_navigation:not(.navigation-header) .level_1 a,
+.mod_navigation:not(.navigation-header) .level_1 strong {
     display: block;
     padding: .7rem 1rem;
     border-radius: .35rem;
-
-    color: var(--nav-color);
-    font-weight: 600;
+    color: var(--nav-dropdown-hover-color);
+    font-weight: 400;
     line-height: 1.35;
     text-decoration: none;
     transition: background-color .15s ease, color .15s ease;
 }
 
-.mod_navigation .level_1 a:hover,
-.mod_navigation .level_1 a:focus-visible {
+.mod_navigation:not(.navigation-header) .level_1 a:hover,
+.mod_navigation:not(.navigation-header) .level_1 a:focus-visible {
     color: var(--nav-hover-color);
 }
 
-.mod_navigation .level_1 > li.active > strong {
+.mod_navigation:not(.navigation-header) .level_1 > li.active > strong {
     background: var(--nav-active-color);
     color: #fff;
 }
 
-.mod_navigation .level_1 > li.trail > a {
+.mod_navigation:not(.navigation-header) .level_1 > li.trail > a {
     background: var(--nav-color);
-    color: #fff;
+    color: var(--nav-dropdown-hover-color);
 }
-.mod_navigation .level_2,
-.mod_navigation .level_3 {
+.mod_navigation:not(.navigation-header) .level_2,
+.mod_navigation:not(.navigation-header) .level_3 {
     list-style: none;
     margin: .15rem 0 .35rem;
     padding: 0 0 0 .75rem;
 }
 
-.mod_navigation .level_2 a,
-.mod_navigation .level_2 strong,
-.mod_navigation .level_3 a,
-.mod_navigation .level_3 strong {
+.mod_navigation:not(.navigation-header) .level_2 a,
+.mod_navigation:not(.navigation-header) .level_2 strong,
+.mod_navigation:not(.navigation-header) .level_3 a,
+.mod_navigation:not(.navigation-header) .level_3 strong {
     display: block;
     padding: .5rem .75rem;
     border-radius: .35rem;
 
-    color: var(--DwColor1, #333);
+    //color: var(--DwColor1, #333);
     background: transparent;
     font-weight: 400;
     line-height: 1.35;
     text-decoration: none;
 }
 
-.mod_navigation .level_2 a:hover,
-.mod_navigation .level_2 a:focus-visible,
-.mod_navigation .level_3 a:hover,
-.mod_navigation .level_3 a:focus-visible,
-.mod_navigation .level_2 li.active > strong,
-.mod_navigation .level_3 li.active > strong,
-.mod_navigation .level_2 li.trail > a,
-.mod_navigation .level_3 li.trail > a {
+.mod_navigation:not(.navigation-header) .level_2 a:hover,
+.mod_navigation:not(.navigation-header) .level_2 a:focus-visible,
+.mod_navigation:not(.navigation-header) .level_3 a:hover,
+.mod_navigation:not(.navigation-header) .level_3 a:focus-visible,
+.mod_navigation:not(.navigation-header) .level_2 li.active > strong,
+.mod_navigation:not(.navigation-header) .level_3 li.active > strong,
+.mod_navigation:not(.navigation-header) .level_2 li.trail > a,
+.mod_navigation:not(.navigation-header) .level_3 li.trail > a {
     background: var(--nav-dropdown-hover-background);
     color: var(--nav-dropdown-hover-color);
 }
